@@ -1,0 +1,298 @@
+.mea-culpa-regular {
+    font-family: "Mea Culpa", cursive;
+    font-weight: 400;
+    font-style: normal;
+}  
+
+.navbarTop
+{
+    background-color: rgb(0, 0, 0);
+    
+}
+
+.navbarTop a
+{
+    color: white;
+    text-decoration: none;
+    font-size: 3.5vw;
+}
+
+.navbarTop a:hover
+{
+    animation-name: aHover;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: initial;
+}
+
+.navbarTop ul
+{
+    list-style: none;
+}
+
+.tituloLogo img
+{
+    width: 32vw;
+}
+
+.buscarInput input
+{
+    width: 19vw;
+    height: 3.3vw;
+    border-color: #AD48DC;
+    border-width: 0.3vw;
+    border-top-left-radius: 2vw;
+    border-bottom-left-radius: 2vw;
+    border-style: solid;
+    margin-right: 5.4vw;
+    font-size: 2vw;
+    padding-left: 1.5vw;
+}
+
+.aLupa
+{
+    margin: 0vw;
+    position: absolute;
+    right: 10.8vw;
+    width: 4.5vw;
+    height: 3.3vw;
+    border-color: #AD48DC;
+    border-width: 0.3vw;
+    border-left-color: rgb(0, 0, 0, 0);
+    border-style: solid;
+    padding: 0vw;
+    justify-content: center;
+    border-top-right-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+    background-color: rgb(0, 0, 0, 0);
+}
+
+.aLupa:hover
+{
+    animation-name: btnBuscarHover;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: initial;
+}
+
+.lupa
+{
+    margin-left: 0.5vw;
+    width: 2.7vw;
+}
+
+.botonBuscar
+{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(0,0,0,0); 
+    border-width: 0;
+    position: absolute;
+    right: 6.5vw;
+}
+
+.divFiltro
+{
+    background-color: black;
+    color: white;
+    display: none;
+    position: absolute;
+    z-index: 1;
+    right: 3vw;
+    top: 25vw;
+    padding: 1vw 2vw 1vw 2vw;
+}
+
+.filtro
+{
+    margin: 0;
+    padding: 0;
+    width: 3.4vw;
+}
+
+.botonBuscar:hover ~ .divFiltro
+{
+    display: block;
+    background-color: black;
+    color: white;
+    position: absolute;
+    z-index: 1;
+    right: 3vw;
+    top: 24vw;
+    padding: 1vw 2vw 1vw 2vw;
+}
+
+.divFiltro:hover
+{
+    display: block;
+    background-color: black;
+    color: white;
+    position: absolute;
+    z-index: 1;
+    right: 3vw;
+    top: 24vw;
+    padding: 1vw 2vw 1vw 2vw;
+}
+
+.aTarjetas
+{
+    text-decoration: none;
+    color: black;
+}
+
+.tarjetas
+{
+    border-color: #AD48DC;
+    border-width: 0.3vw;
+    border-style: solid;
+    width: 21.2vw;
+}
+
+.cuerpo-tarjeta
+{
+    background-color: #CC8EE9;
+    padding-top: 0.4vw;
+}
+
+.navPaginacion a
+{
+    text-decoration: none;
+    color: black;
+    align-items: center;
+}
+
+.navPaginacion
+{
+    margin-top: 2vw;
+    display: flex;
+    padding: 1px 0px 1px 0px;
+    list-style: none;
+    font-size: 1.2vw;
+}
+
+.page-item
+{
+    border-color: #AD48DC;
+    border-style: solid;
+    border-radius: 0.8vw;
+    width: 3.7vw;
+    height: 3.7vw;
+    font-size: 2.1vw;
+    text-align: center;
+    border-width: 0.3vw;
+    margin-left: 1vw;
+}
+
+.page-item-activo
+{
+    background-color: #AD48DC;
+    border-color: #AD48DC;
+    border-style: solid;
+    border-radius: 0.8vw;
+    width: 3.7vw;
+    height: 3.7vw;
+    font-size: 2.1vw;
+    text-align: center;
+    border-width: 0.3vw;
+    margin-left: 1vw;
+}
+
+/* ANIMACIONES */
+@keyframes aHover {
+    to
+    {
+        color: #AD48DC;
+    }
+}
+
+@keyframes btnBuscarHover {
+    to
+    {
+        background-color: #AD48DC;
+    }
+}
+
+.text-style
+{
+    width: 37vw;
+    height: 3vw;
+    font-size: 2vw;
+    border-color: #AD48DC;
+    border-style: solid;
+    border-radius: 0.8vw;
+    border-width: 0.2vw;
+    margin-top: 0.8vw;
+    padding-left: 0.6vw;
+}
+
+.area-style
+{
+    width: 37vw;
+    height: 8vw;
+    font-size: 2vw;
+    border-color: #AD48DC;
+    border-style: solid;
+    border-radius: 0.8vw;
+    border-width: 0.2vw;
+    margin-top: 0.8vw;
+    padding-left: 0.6vw;
+}
+
+.combo-style
+{
+    width: 37vw;
+    height: 3vw;
+    font-size: 2vw;
+    border-color: #AD48DC;
+    border-style: solid;
+    border-radius: 0.8vw;
+    border-width: 0.2vw;
+    margin-top: 0.8vw;
+    padding-left: 0.6vw;
+}
+
+.datetime-style
+{
+    width: 18vw;
+    text-align: center;
+    margin-right: 1vw;
+    height: 3vw;
+    font-size: 2vw;
+    border-color: #AD48DC;
+    border-style: solid;
+    border-radius: 0.8vw;
+    border-width: 0.2vw;
+    margin-top: 0.8vw;
+    padding-left: 0.6vw;
+}
+
+.btn-style
+{
+    width: 10vw;
+    height: 3.3vw;
+    margin-top: 1vw;
+    font-size: 2vw;
+    color: white;
+    background-color: #AD48DC;
+    border-color: #AD48DC;
+    border-style: solid;
+    border-radius: 0.8vw;
+    border-width: 0.2vw;
+}
+
+.btn-style:hover
+{
+    animation-name: btnAceptar;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: initial;
+}
+
+/* ANIMACIONES */
+@keyframes btnAceptar {
+    to
+    {
+        background-color: #8238a5;
+        border-color: #8238a5;
+    }
+}
