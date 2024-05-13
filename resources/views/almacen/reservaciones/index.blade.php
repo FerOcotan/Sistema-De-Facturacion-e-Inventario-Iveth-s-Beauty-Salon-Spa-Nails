@@ -12,26 +12,26 @@
     <form action="{{route('realizarReserva')}}" method="POST">
         {{ csrf_field() }}
         <div>
-            <input type="text" value="{{ $cliente->first()->nombre . ' ' . $cliente->first()->apellido }}" class="text-style" readonly>
+            <input type="text" value="{{ $cliente->first()->nombre_cliente . ' ' . $cliente->first()->apellido_cliente }}" class="text-style" readonly>
         </div>
         <div>
-            <input type="text" value="{{ $cliente->first()->telefono }}" class="text-style" readonly>
+            <input type="text" value="{{ $cliente->first()->telefono_cliente }}" class="text-style" readonly>
         </div>
         <div>
-            <textarea class="area-style" readonly>{{ $cliente->first()->direccion }}</textarea>
+            <textarea class="area-style" readonly>{{ $cliente->first()->direccion_cliente }}</textarea>
         </div>
         <div>
-            <input type="text" value="{{ $cliente->first()->dui }}" class="text-style" readonly>
+            <input type="text" value="{{ $cliente->first()->dui_cliente }}" class="text-style" readonly>
         </div>
         <div>
-            <input type="text" value="{{ $cliente->first()->email }}" class="text-style" readonly>
+            <input type="text" value="{{ $cliente->first()->email_cliente }}" class="text-style" readonly>
         </div>
         <div>
             <select name="id_servicio" id="id_servicio" class="combo-style">
                 <option selected>Seleccione un Servicio</option>
                 @foreach ($servicios as $item)
                     <?php
-                        echo '<option value="'. $item->id_servicio .'">'. $item->nombre .'</option>';
+                        echo '<option value="'. $item->id_servicio .'">'. $item->nombre_servicio .'</option>';
                     ?>
                 @endforeach
             </select>

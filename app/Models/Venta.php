@@ -5,21 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reservacion extends Model
+class Venta extends Model
 {
     use HasFactory;
 
-    protected $table='reservacion';
+    protected $table='venta';
 
-    protected $primaryKey='id_reservacion';
+    protected $primaryKey='id_venta';
 
     public $timestamps=false;
 
     protected $fillable=[
         'id_cliente',
-        'id_servicio',
-        'id_estado',
-        'metodo_pago_reservacion',
-        'fecha_hora_reservacion'
+        'id_empleado',
+        'metodo_pago_venta',
+        'fecha_hora_venta',
+        'total_venta'
     ];
 }

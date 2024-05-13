@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Rol extends Model
 {
     use HasFactory;
 
-    protected $table='categoria';
+    protected $table='rol';
 
-    protected $primaryKey='id_categoria';
+    protected $primaryKey='id_rol';
 
     public $timestamps=false;
 
     protected $fillable=[
-        'nombre_categoria',
-        'descripcion_categoria'
+        'nombre_rol',
+        'descripcion_rol'
     ];
 }

@@ -16,13 +16,13 @@ class Cliente extends Model
     public $timestamps=false;
 
     protected $fillable=[
-        'nombre',
-        'apellido',
-        'telefono',
-        'direccion',
-        'dui',
-        'email',
-        'img_user',
-        'id_rol'
+        'nombre_cliente',
+        'apellido_cliente',
+        'telefono_cliente',
+        'direccion_cliente',
+        'dui_cliente',
+        'email_cliente',
+        'clave_cliente',
+        'img_user'
     ];
 }

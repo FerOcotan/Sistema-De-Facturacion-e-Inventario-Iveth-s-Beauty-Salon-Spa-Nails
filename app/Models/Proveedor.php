@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Proveedor extends Model
 {
     use HasFactory;
 
-    protected $table='categoria';
+    protected $table='proveedor';
 
-    protected $primaryKey='id_categoria';
+    protected $primaryKey='id_proveedor';
 
     public $timestamps=false;
 
     protected $fillable=[
-        'nombre_categoria',
-        'descripcion_categoria'
+        'nombre_proveedor',
+        'direccion_proveedor',
+        'telefono_proveedor'
     ];
 }

@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Estado extends Model
 {
     use HasFactory;
 
-    protected $table='categoria';
+    protected $table='estado';
 
-    protected $primaryKey='id_categoria';
+    protected $primaryKey='id_estado';
 
     public $timestamps=false;
 
     protected $fillable=[
-        'nombre_categoria',
-        'descripcion_categoria'
+        'tipo_estado',
+        'nombre_estado',
+        'descripcion_estado'
     ];
 }

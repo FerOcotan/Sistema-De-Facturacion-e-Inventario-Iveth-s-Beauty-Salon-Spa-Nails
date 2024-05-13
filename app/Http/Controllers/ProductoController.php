@@ -24,13 +24,13 @@ class ProductoController extends Controller
     {
         if (!empty($request->id_categoria))
         {
-            $productos = Producto::where('nombre', 'LIKE', '%' . $request->buscarNombre . '%')
+            $productos = Producto::where('nombre_producto', 'LIKE', '%' . $request->buscarNombre . '%')
             ->where('id_categoria', '=', $request->id_categoria)
             ->paginate(8);
         }
         else
         {
-            $productos = Producto::where('nombre', 'LIKE', '%' . $request->buscarNombre . '%')
+            $productos = Producto::where('nombre_producto', 'LIKE', '%' . $request->buscarNombre . '%')
             ->paginate(8);
         }
 

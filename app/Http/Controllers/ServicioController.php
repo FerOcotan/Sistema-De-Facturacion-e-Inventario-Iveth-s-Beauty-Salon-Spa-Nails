@@ -16,7 +16,7 @@ class ServicioController extends Controller
 
     public function buscar(Request $request)
     {
-        $servicios = Servicio::where('nombre', 'LIKE', '%' . $request->buscarNombre . '%')
+        $servicios = Servicio::where('nombre_servicio', 'LIKE', '%' . $request->buscarNombre . '%')
         ->paginate(8);
 
         if ($servicios == null)

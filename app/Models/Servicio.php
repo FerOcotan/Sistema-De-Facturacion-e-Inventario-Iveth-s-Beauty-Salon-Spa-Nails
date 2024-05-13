@@ -16,8 +16,9 @@ class Servicio extends Model
     public $timestamps=false;
 
     protected $fillable=[
-        'nombre',
-        'descripcion',
-        'precio'
+        'id_estado',
+        'nombre_servicio',
+        'descripcion_servicio',
+        'precio_servicio'
     ];
 }

@@ -51,8 +51,8 @@
     
     foreach ($productos as $item) {
         $producto[$iProd][0] = $item->id_producto;
-        $producto[$iProd][1] = $item->nombre;
-        $producto[$iProd][2] = $item->precio;
+        $producto[$iProd][1] = $item->nombre_producto;
+        $producto[$iProd][2] = $item->precio_producto;
         $iProd++;
     }
     

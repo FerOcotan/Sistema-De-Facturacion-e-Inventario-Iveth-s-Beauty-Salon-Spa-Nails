@@ -16,11 +16,14 @@ class Empleado extends Model
     public $timestamps=false;
 
     protected $fillable=[
-        'nombre',
-        'apellido',
-        'telefono',
-        'direccion',
-        'dui',
-        'id_rol'
+        'id_rol',
+        'id_estado',
+        'nombre_empleado',
+        'apellido_empleado',
+        'telefono_empleado',
+        'direccion_empleado',
+        'dui_empleado',
+        'email_empleado',
+        'clave_empleado'
     ];
 }
