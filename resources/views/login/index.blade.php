@@ -15,6 +15,7 @@
         <form action="{{ route('inicioSesion') }}" method="post">
             {{ csrf_field() }}
             <input type="text" class="form-control" placeholder="E-mail" name="correo" id="correo">
+            <input type="text" class="form-control" placeholder="Contraseña" name="clave" id="clave">
             {{-- <input type="text" class="form-control" placeholder="clave" name="clave" id="clave"> --}}
             <input type="submit" class="form-control bg-primary text-light " value="Iniciar Sesion">
         </form>

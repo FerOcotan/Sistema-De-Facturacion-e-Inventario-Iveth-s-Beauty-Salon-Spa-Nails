@@ -23,7 +23,8 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $cliente = Cliente::where('email_cliente', $request->correo);
+        $cliente = Cliente::where('email_cliente', $request->correo)
+        ->where('clave_cliente', $request->clave);
 
         if($cliente->doesntExist() == false)
         {
@@ -33,7 +34,8 @@ class LoginController extends Controller
         }
         else
         {
-            $empleado = Empleado::where('email_empleado', $request->correo);
+            $empleado = Empleado::where('email_empleado', $request->correo)
+            ->where('clave_empleado', $request->clave);
 
             if($empleado->doesntExist() == false)
             {
