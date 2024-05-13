@@ -5,24 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
+class Categoria extends Model
 {
     use HasFactory;
 
-    protected $table='usuario';
+    protected $table='categoria';
 
-    protected $primaryKey='id_usuario';
+    protected $primaryKey='id_categoria';
 
     public $timestamps=false;
 
     protected $fillable=[
         'nombre',
-        'apellido',
-        'telefono',
-        'direccion',
-        'dui',
-        'email',
-        'img_user',
-        'id_rol'
+        'descripcion'
     ];
 }

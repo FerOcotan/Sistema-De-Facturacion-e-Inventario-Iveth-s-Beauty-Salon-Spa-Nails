@@ -1,2 +1,0 @@
-# Sistema-De-Facturacion-e-Inventario-Iveth-s-Beauty-Salon-Spa-Nails
-Para aumentar el alcance a potenciales clientes y el número de ventas de Iveth’s Beauty Salon Spa &amp; Nails, se necesita implementar una plataforma digital, por el cual los clientes puedan cotizar diferentes productos y agendar citas, sin importar la hora y el lugar donde se encuentren, y los empleados gestionar el inventario y generar facturas.

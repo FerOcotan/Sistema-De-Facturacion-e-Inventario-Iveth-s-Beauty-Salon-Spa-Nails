@@ -1,3 +1,8 @@
+<?php
+    // if($id_usuario > 0)
+    // {
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -22,6 +27,12 @@
                     <li class="nav-item">
                         <a class="nav-link-hover" aria-current="page" href="{{route('servicio')}}">Servicios</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link-hover" aria-current="page" href="{{route('reservaciones')}}">Hacer reservación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-hover" aria-current="page" href="{{route('cerrarSesion')}}">Cerrar Sesión</a>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -37,3 +48,16 @@
         <script src="{{asset('js/script.js')}}"></script>
     </body>
 </html>
+
+<?php
+    // }
+    // else if($id_usuario == 0)
+    // {
+    //     echo 'Igual a 0';
+    //     echo '<br>';
+    //     echo 'Valor real: ' . $id_usuario;
+    // }
+    // else {
+    //     echo 'Pagina no disponible';
+    // }
+?>

@@ -16,7 +16,7 @@
     <div class="container d-flex justify-content-between mb-3">
         <input type="hidden" value="" name="id_categoria" id="id_categoria">
         <div>
-            <h1 style="font-size: 3vw;">Productos</h1>
+            <h1 style="font-size: 3vw;">Servicios</h1>
         </div>
         <div class="buscarInput d-flex">
             <div>
