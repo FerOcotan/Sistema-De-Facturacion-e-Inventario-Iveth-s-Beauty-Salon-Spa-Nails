@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ReservacionController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\EmpleadosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
@@ -23,3 +24,5 @@ Route::post('/servicio/buscar', [ServicioController::class, 'buscar'])->middlewa
 Route::get('/reservacion', [ReservacionController::class, 'index'])->middleware('App\Http\Middleware\ClienteAuth')->name('reservaciones');
 
 Route::post('/reservacion/realizar_reserva', [ReservacionController::class, 'store'])->middleware('App\Http\Middleware\ClienteAuth')->name('realizarReserva');
+
+Route::get('/empleado', [EmpleadosController::class, 'empleado'])->name('empleado');

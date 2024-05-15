@@ -1,0 +1,120 @@
+body {
+    font-family: sans-serif;
+  }
+  
+  .invoice-container {
+    width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .invoice-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .invoice-details {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+ .invoice-info-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoice-info {
+  display: inline-block;
+  width: auto;
+  margin-right: 20px; /* Ajusta el valor según tu preferencia */
+}
+
+ .invoice-info-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoice-info {
+  display: inline-block;
+  width: auto;
+  margin-right: 20px; /* Ajusta el valor según tu preferencia */
+}
+
+ .invoice-info-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoice-info {
+  display: inline-block;
+  width: auto;
+  margin-right: 20px; /* Ajusta el valor según tu preferencia */
+}
+
+ .invoice-info-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoice-info {
+  display: inline-block;
+  width: auto;
+  margin-right: 20px; /* Ajusta el valor según tu preferencia */
+}
+
+  
+  .invoice-info label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .invoice-info input,
+  .invoice-info select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .invoice-products {
+    margin-bottom: 20px;
+  }
+  
+  .invoice-products table {
+    width: 100
+  }
+
+  .invoice-container {
+  width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.invoice-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.invoice-details {
+  /* Elimina el display: flex que ya no es necesario */
+}
+
+.invoice-info {
+  /* Elimina estilos previos */
+  margin-bottom: 10px; /* Ajusta el margin-bottom según tu preferencia */
+}
+
+.invoice-info label {
+  /* Elimina estilos previos */
+  display: block;
+  margin-bottom: 5px;
+}
+
+.invoice-products {
+  margin-bottom: 20px;
+}
+
+.invoice-products table {
+  width: 100%;
+}
