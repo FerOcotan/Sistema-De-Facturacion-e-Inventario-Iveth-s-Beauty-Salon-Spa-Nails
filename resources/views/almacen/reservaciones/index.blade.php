@@ -51,7 +51,7 @@
         </div>
 
         <div class="text-center">
-            <button class="btn-style">Aceptar</button>
+            <button type="submit" class="btn-style">Aceptar</button>
         </div>
     </form>
 </div>
