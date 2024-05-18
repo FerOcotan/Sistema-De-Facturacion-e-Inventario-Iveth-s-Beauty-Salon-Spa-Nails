@@ -7,6 +7,8 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\EmpleadosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\Reservacion;
+use App\Models\Venta;
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
 
@@ -33,3 +35,7 @@ Route::get('/empleado', [EmpleadosController::class, 'empleado'])->name('emplead
 
 Route::get('/registro', [UserController::class, 'showRegistrationForm'])->name('registro.form');
 Route::post('/registro', [UserController::class, 'register'])->name('registro');
+
+
+//Ruta de venta
+Route::resource('venta', ReservacionController::class);
