@@ -1,7 +1,14 @@
 @extends ('layouts.plantillaPublica')
 @section ('contenido')
 
-
+<!-- INICIO TITULO Y LOGO -->
+<div class="container d-flex justify-content-center">
+    <div class="tituloLogo text-center">
+        <img src="{{asset('./img/logo_delgado.png')}}" alt="">
+        <h1 style="font-size: 4vw;">Catálogo</h1>
+    </div>
+</div>
+<!-- FIN TITULO Y LOGO -->
 
 <!-- INICIO BUSCAR -->
 <form action="{{ route('buscarServicio') }}" method="POST">

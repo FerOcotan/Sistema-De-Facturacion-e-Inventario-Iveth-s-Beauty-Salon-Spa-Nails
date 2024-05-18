@@ -15,11 +15,28 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Mea+Culpa&display=swap" rel="stylesheet">
     </head>
-
-    @include('includes.navbar')
     <body class="mea-culpa-regular">
 
-        
+        <!-- INICIO DEL NAVBAR -->
+        <header>
+            <nav class="navbarTop ps-3 pe-5 ">
+                <ul class="d-flex justify-content-between ">
+                    <li class="nav-item ">
+                        <a class="nav-link-hover" href="{{route('indexProducto')}}">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-hover" aria-current="page" href="{{route('servicio')}}">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-hover" aria-current="page" href="{{route('reservaciones')}}">Hacer reservación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-hover" aria-current="page" href="{{route('cerrarSesion')}}">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!-- FIN DEL NAVBAR -->
 
         @yield('contenido')
         
