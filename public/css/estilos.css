@@ -1,20 +1,19 @@
 .mea-culpa-regular {
-    font-family: "Mea Culpa", cursive;
-    font-weight: 400;
+    font-family: "DM Serif Display", serif;
     font-style: normal;
 }  
 
 .navbarTop
 {
-    background-color: rgb(0, 0, 0);
+    background-color: transparent;
     
 }
 
 .navbarTop a
 {
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
-    font-size: 3.5vw;
+   
 }
 
 .navbarTop a:hover
@@ -32,7 +31,7 @@
 
 .tituloLogo img
 {
-    width: 32vw;
+    width: 3vw;
 }
 
 .buscarInput input
@@ -45,7 +44,7 @@
     border-bottom-left-radius: 2vw;
     border-style: solid;
     margin-right: 5.4vw;
-    font-size: 2vw;
+
     padding-left: 1.5vw;
 }
 
@@ -167,7 +166,7 @@
     display: flex;
     padding: 1px 0px 1px 0px;
     list-style: none;
-    font-size: 1.2vw;
+
 }
 
 .page-item
@@ -177,7 +176,7 @@
     border-radius: 0.8vw;
     width: 3.7vw;
     height: 3.7vw;
-    font-size: 2.1vw;
+
     text-align: center;
     border-width: 0.3vw;
     margin-left: 1vw;
@@ -191,7 +190,7 @@
     border-radius: 0.8vw;
     width: 3.7vw;
     height: 3.7vw;
-    font-size: 2.1vw;
+  
     text-align: center;
     border-width: 0.3vw;
     margin-left: 1vw;
@@ -216,7 +215,7 @@
 {
     width: 37vw;
     height: 3vw;
-    font-size: 2vw;
+ 
     border-color: #AD48DC;
     border-style: solid;
     border-radius: 0.8vw;
@@ -229,7 +228,7 @@
 {
     width: 37vw;
     height: 8vw;
-    font-size: 2vw;
+   
     border-color: #AD48DC;
     border-style: solid;
     border-radius: 0.8vw;
@@ -242,7 +241,7 @@
 {
     width: 37vw;
     height: 3vw;
-    font-size: 2vw;
+ 
     border-color: #AD48DC;
     border-style: solid;
     border-radius: 0.8vw;
@@ -257,7 +256,7 @@
     text-align: center;
     margin-right: 1vw;
     height: 3vw;
-    font-size: 2vw;
+   
     border-color: #AD48DC;
     border-style: solid;
     border-radius: 0.8vw;
@@ -271,7 +270,8 @@
     width: 10vw;
     height: 3.3vw;
     margin-top: 1vw;
-    font-size: 2vw;
+ 
+
     color: white;
     background-color: #AD48DC;
     border-color: #AD48DC;
@@ -296,3 +296,20 @@
         border-color: #8238a5;
     }
 }
+
+
+#navbar-primary .navbar-nav { 
+    /* background: #ededed; */
+    width: 100%;
+    text-align: center;
+  }
+  
+  #navbar-primary .navbar-nav > li {
+    display: inline-block;
+    float: none;
+  }
+  
+  #navbar-primary .navbar-nav > li > a {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
