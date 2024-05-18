@@ -6,6 +6,7 @@ use App\Http\Controllers\ReservacionController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\EmpleadosController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
 
@@ -26,3 +27,9 @@ Route::get('/reservacion', [ReservacionController::class, 'index'])->middleware(
 Route::post('/reservacion/realizar_reserva', [ReservacionController::class, 'store'])->middleware('App\Http\Middleware\ClienteAuth')->name('realizarReserva');
 
 Route::get('/empleado', [EmpleadosController::class, 'empleado'])->name('empleado');
+
+
+
+
+Route::get('/registro', [UserController::class, 'showRegistrationForm'])->name('registro.form');
+Route::post('/registro', [UserController::class, 'register'])->name('registro');
