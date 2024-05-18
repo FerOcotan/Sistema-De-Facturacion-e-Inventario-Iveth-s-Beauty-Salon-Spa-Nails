@@ -17,38 +17,17 @@ class VentaController extends Controller
     // Muestra el formulario para crear una nueva venta
     public function create()
     {
-        $venta = new Venta();
+  
         return view('venta.create', compact('venta'));
     }
 
     // Almacena una nueva venta en la base de datos
     public function store(Request $request)
     {
-        /*$validatedData = $request->validate([
-            'id_cliente' => 'required',
-            'id_empleado' => 'required',
-            'metodo_pago_venta' => 'required',
-            'fecha_hora_venta' => 'required|date',
-            'total_venta' => 'required|numeric',
-        ]);
-
-        Venta::create($validatedData);
-
-        return redirect()->route('venta.index')->with('success', 'Venta creada con éxito'); 
-        */
-
-        /*
-        request()->validate(Venta::$rules);
-
-        $venta = Venta::create($request->all());
-
-        return redirect()->route('venta.index')
-            ->with('success', 'Empleado created successfully.');
-        
-        */
+       
+    try {
 
         
-        // Crear y guardar un nuevo cliente
         $ventas = new Venta();
         $ventas->id_cliente = $request->id_cliente;
         $ventas->id_empleado = $request->id_empleado;
@@ -56,10 +35,16 @@ class VentaController extends Controller
         $ventas->fecha_hora_venta = $request->fecha_hora_venta;
         $ventas->total_venta = $request->total_venta;
 
-        if ($ventas->save()) {
-            return view('venta.index')->with('success', 'Registro exitoso. Por favor, inicie sesión.');
-        } else {
-            return redirect()->route('venta.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
+
+    if ($ventas->save()) {
+        return redirect()->route('venta.index')->with('success', 'Registro exitoso. Por favor, inicie sesión.');
+    } else {
+     
+        return redirect()->route('venta.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
+    }
+        } catch (\Exception $e) {
+          
+            return redirect()->route('venta.create')->with('error', 'Hubo un problema al procesar el registro: ' . $e->getMessage());
         }
         
         

@@ -17,32 +17,26 @@
     </head>
     <body class="mea-culpa-regular">
 
-        <!-- INICIO DEL NAVBAR -->
-        <header>
-            <nav class="navbarTop ps-3 pe-5 ">
-                <ul class="d-flex justify-content-between ">
-                    <li class="nav-item ">
-                        <a class="nav-link-hover" href="{{route('indexProducto')}}">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link-hover" aria-current="page" href="{{route('servicio')}}">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link-hover" aria-current="page" href="{{route('reservaciones')}}">Hacer reservación</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link-hover" aria-current="page" href="{{route('cerrarSesion')}}">Cerrar Sesión</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <!-- FIN DEL NAVBAR -->
 
         @yield('contenido')
         
-        <footer class="navbarTop text-center pt-3 pb-3 ">
-            <span class="text-light" style="font-size: 2vw;">Copyright 2024 &#169; Iveth's Beauty Salon - Todos los derechos reservados</span>
-        </footer>
+           <!-- INICIO DEL FOOTER -->
+           <footer class="footerTop text-center pt-3 pb-3">
+    <div>
+       
+    </div>
+    <span style="font-size: 16px;">
+        Copyright 2024 &#169; Iveth's Beauty Salon - Todos los derechos reservados
+        <a href="https://www.instagram.com/tuperfil" target="_blank" class="social-icon">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/tuperfil" target="_blank" class="social-icon">
+            <i class="fab fa-facebook"></i>
+        </a>
+    </span>
+</footer>
+
+    <!-- FIN DEL FOOTER -->
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="{{asset('js/script.js')}}"></script>

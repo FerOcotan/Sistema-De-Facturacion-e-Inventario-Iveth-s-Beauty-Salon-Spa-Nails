@@ -1,0 +1,203 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: medium;
+}
+
+.navbarTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px 20px;
+}
+
+.navbarTop a {
+    color: #000000;
+}
+
+.logo img {
+    height: 100px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.aLupa {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.filter-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.filter-button:hover {
+    background-color: #444;
+}
+
+.divFiltro {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-link-hover {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link-hover i {
+    margin-right: 8px;
+}
+
+.nav-link-hover:hover {
+    text-decoration: underline;
+}
+
+.logout-button {
+   align-items: center;
+    color: #9614d3;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #9614d3ef; /* Color de fondo azul */
+    color: white; /* Color del texto blanco */
+    border: 1px solid #9614d341;
+    border-radius: 0 4px 4px 0; /* Borde redondeado solo en la derecha */
+
+}
+
+.logout-button i {
+    margin-right: 8px;
+}
+
+.logout-button:hover {
+    color: #9614d341;
+}
+
+.btn-primary {
+    background: #000000;
+    border: none;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #9614d341;
+}
+
+.dosa {
+    color: #000000;
+    
+}
+
+
+/* Estilos para el contenedor */
+.search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Estilos para el campo de búsqueda */
+  #site-search {
+    width: 500px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px; /* Borde redondeado solo en la izquierda */
+    font-size: 16px;
+  }
+  
+  /* Estilos para el botón */
+  .btn-search {
+    padding: 10px;
+    background-color: #9614d3ef; /* Color de fondo azul */
+    color: white; /* Color del texto blanco */
+    border: 1px solid #9614d341;
+    border-radius: 0 4px 4px 0; /* Borde redondeado solo en la derecha */
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .btn-search:hover {
+    background-color: #9614d3; /* Color más oscuro al pasar el ratón */
+  }
+  
+  /* Para mantener el mismo tamaño y apariencia */
+  input[type="search"],
+  .btn-primary {
+    height: 40px; /* Altura consistente */
+  }
+  
+
+
+  .footerTop {
+    background-color: #333;
+    color: white;
+    padding: 20px 20px; /* Igual que el navbar, puedes ajustar si es necesario */
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.navPaginacion a {
+    color: #9614d3;
+}
+
+.text-light {
+    background-color: #9614d3ef;
+    color: rgb(0, 0, 0);
+    
+}
+
+.social-icon {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #d1d1d1; /* Color al pasar el cursor, ajusta según tu preferencia */
+}

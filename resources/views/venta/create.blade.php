@@ -23,10 +23,9 @@
                 <label for="total_venta" class="form-label">Total</label>
                 <input type="text" class="form-control" id="total_venta" name="total_venta" placeholder="Total" required>
             </div>
-            <button class="boton">
-                <ion-icon name="print-outline"></ion-icon>
-                <a href="{{ route('venta.index') }}" class="btn btn-primary">Guardar</a>
-            </button>
+            
+            <button type="submit" class="btn btn-primary" >Guardar</button>
+           
         </form>
     </div>
 
