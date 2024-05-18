@@ -94,11 +94,12 @@
                 <img src="/Jhampier.jpg" alt="">
                 <div class="info-usuario">
                     <div class="nombre-email">
-                        <span class="nombre">Cerrar Sesión</span>
+                    <span class="nombre">Cerrar Sesión</span>
                         
                     </div>
-                    <a href="@Url.Action("CerrarSesion", "Home")" class="nav-link">
-                        <ion-icon name="exit-outline"></ion-icon>
+                
+                    <a class="nombre" class="nav-link" aria-current="page" href="{{route('cerrarSesion')}}">  <ion-icon name="exit-outline"></ion-icon></a>
+                       
                     </a>
                 </div>
             </div>
