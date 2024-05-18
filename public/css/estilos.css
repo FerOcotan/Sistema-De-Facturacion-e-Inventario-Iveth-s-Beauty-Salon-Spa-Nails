@@ -1,7 +1,7 @@
 .mea-culpa-regular {
-    font-family: "Mea Culpa", cursive;
-    font-weight: 400;
-    font-style: normal;
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    font-size: medium;
 }  
 
 .navbarTop
@@ -14,7 +14,7 @@
 {
     color: white;
     text-decoration: none;
-    font-size: 3.5vw;
+    font-size: 1vw;
 }
 
 .navbarTop a:hover
@@ -175,9 +175,9 @@
     border-color: #AD48DC;
     border-style: solid;
     border-radius: 0.8vw;
-    width: 3.7vw;
-    height: 3.7vw;
-    font-size: 2.1vw;
+    width: 3vw;
+    height: 2vw;
+    font-size: 16px;
     text-align: center;
     border-width: 0.3vw;
     margin-left: 1vw;
@@ -296,3 +296,4 @@
         border-color: #8238a5;
     }
 }
+

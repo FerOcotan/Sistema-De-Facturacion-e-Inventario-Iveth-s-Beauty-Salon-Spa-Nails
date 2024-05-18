@@ -23,7 +23,7 @@
             </div>
             <button class="boton">
                 <ion-icon name="print-outline"></ion-icon>
-                <span>Facturas</span>
+                <a href="{{ route('venta.index') }}" class="btn btn-primary">Facturas</a>
             </button>
         </div>
 
