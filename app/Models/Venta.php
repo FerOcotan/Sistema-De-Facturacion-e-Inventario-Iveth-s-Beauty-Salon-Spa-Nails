@@ -9,9 +9,18 @@ class Venta extends Model
 {
     use HasFactory;
 
-    protected $table='venta';
+    static $rules = [
+		//'id_venta' => 'required',
+		'id_cliente' => 'required',
+		'id_empleado' => 'required',
+		'metodo_pago_venta' => 'required',
+    'fecha_hora_venta' => 'required',
+		'fecha_venta' => 'required',
+    ];
 
+    protected $table='venta';
     protected $primaryKey='id_venta';
+    protected $perPage = 20;
 
     public $timestamps=false;
 

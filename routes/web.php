@@ -5,10 +5,11 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ReservacionController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\EmpleadosController;
+use App\Http\Controllers\VentaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Models\Reservacion;
-use App\Models\Venta;
+//use App\Models\Reservacion;
+//use App\Models\Venta;
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
 
@@ -38,4 +39,5 @@ Route::post('/registro', [UserController::class, 'register'])->name('registro');
 
 
 //Ruta de venta
-Route::resource('venta', ReservacionController::class);
+Route::resource('venta', VentaController::class);
+
