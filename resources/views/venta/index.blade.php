@@ -3,15 +3,19 @@
 <head>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 
 <main>
     <div class="container">
-        <h1>Ventas</h1>
+        <h1>Facturas</h1>
         <!-- Botón para abrir el modal de creación -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearVentaModal">
-            Crear Venta
+            Crear Factura
         </button>
         
         <!-- Modal de creación -->
@@ -19,7 +23,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="crearVentaModalLabel">Crear Venta</h5>
+                        <h5 class="modal-title" id="crearVentaModalLabel">Crear Factura</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -76,6 +80,13 @@
                         <td>{{ $venta->fecha_hora_venta }}</td>
                         <td>{{ $venta->total_venta }}</td>
                         <td>
+
+                        <!-- Botón para abrir el modal de detalles -->
+                     <!-- Botón de descarga de PDF -->
+                    <button type="button"  class="btn btn-danger">
+                        <i class="bi bi-file-pdf"></i> 
+                    </button>
+
                             <!-- Botón para abrir el modal de detalles -->
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detalleVentaModal{{ $venta->id_venta }}">
                                 Ver
@@ -95,7 +106,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editarVentaModalLabel{{ $venta->id_venta }}">Editar Venta</h5>
+                    <h5 class="modal-title" id="editarVentaModalLabel{{ $venta->id_venta }}">Editar Factura</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -162,7 +173,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="detalleVentaModalLabel{{ $venta->id_venta }}">Detalle de la Venta</h5>
+                                    <h5 class="modal-title" id="detalleVentaModalLabel{{ $venta->id_venta }}">Detalle de la Factura</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
