@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ReservacionController;
+use App\Http\Controllers\ReservacionController2;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\VentaController;
@@ -40,4 +41,7 @@ Route::post('/registro', [UserController::class, 'register'])->name('registro');
 
 //Ruta de venta
 Route::resource('venta', VentaController::class);
+
+//Ruta de reservacion para ver desde el empleado
+Route::resource('reservacion', ReservacionController2::class);
 

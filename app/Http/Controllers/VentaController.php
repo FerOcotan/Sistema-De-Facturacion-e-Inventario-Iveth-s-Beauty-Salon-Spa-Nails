@@ -18,6 +18,7 @@ class VentaController extends Controller
     public function create()
     {
   
+        $venta = new Venta();
         return view('venta.create', compact('venta'));
     }
 
@@ -68,17 +69,18 @@ class VentaController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'cliente' => 'required',
-            'empleado' => 'required',
-            'metodo_pago' => 'required',
-            'fecha' => 'required|date',
-            'total' => 'required|numeric',
+            'id_cliente' => 'required',
+            'id_empleado' => 'required',
+            'metodo_pago_venta' => 'required',
+            'fecha_hora_venta' => 'required|date',
+            'total_venta' => 'required|numeric',
         ]);
-
+    
         $venta = Venta::findOrFail($id);
         $venta->update($validatedData);
-
-        return redirect()->route('venta.index')->with('success', 'Venta actualizada con éxito');
+    
+        return redirect()->route('venta.index')
+            ->with('success', 'Venta actualizada con éxito');
     }
 
     // Elimina una venta específica de la base de datos
