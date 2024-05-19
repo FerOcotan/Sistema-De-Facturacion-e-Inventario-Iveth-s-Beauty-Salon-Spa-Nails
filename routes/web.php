@@ -6,9 +6,14 @@ use App\Http\Controllers\ReservacionController;
 use App\Http\Controllers\ReservacionController2;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\EmpleadosController;
+use App\Http\Controllers\ServicioController2;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\ProductoController2;
 use App\Http\Controllers\VentaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+
+//use App\Models\Servicio;
 //use App\Models\Reservacion;
 //use App\Models\Venta;
 
@@ -44,4 +49,13 @@ Route::resource('venta', VentaController::class);
 
 //Ruta de reservacion para ver desde el empleado
 Route::resource('reservacion', ReservacionController2::class);
+
+//ruta de servicio para ver desde el empleado
+Route::resource('servicio', ServicioController2::class);
+
+//ruta de proveedor para ver desde el empleado
+Route::resource('proveedor', ProveedorController::class);
+
+//ruta de producto para ver desde el empleado
+Route::resource('producto', ProductoController2::class);
 

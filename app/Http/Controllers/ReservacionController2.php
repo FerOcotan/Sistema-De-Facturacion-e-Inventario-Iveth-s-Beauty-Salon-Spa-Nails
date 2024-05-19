@@ -98,6 +98,6 @@ class ReservacionController2 extends Controller
         $reservacion = Reservacion::findOrFail($id);
         $reservacion->delete();
 
-        return redirect()->route('reservacion.index')->with('success', 'Venta eliminada con éxito');
+        return redirect()->route('reservacion.index')->with('success', 'Reservacion eliminada con éxito');
     }
 }
