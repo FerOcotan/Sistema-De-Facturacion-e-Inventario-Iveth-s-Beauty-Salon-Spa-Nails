@@ -1,0 +1,118 @@
+/* General Styles */
+body {
+    background: #9614d341;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.user_card {
+    background: #ffffff;
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    padding: 40px 40px 20px;
+    width: 250px;
+    max-width: 100%;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.brand_logo_container {
+    margin-bottom: 30px;
+}
+
+.brand_logo {
+    width: 250px;
+    height: 250px;
+}
+
+.form_container {
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    border: 1px solid #9614d341;
+    border-radius: 3px;
+    padding: 9px 12px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fafafa;
+}
+
+.form-control:focus {
+    border-color: #a8a8a8;
+    box-shadow: none;
+}
+
+.login_btn {
+    background: #9614D3;
+    border: none;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login_btn:hover {
+    background: #9614d341;
+}
+
+.input_user, .input_pass {
+    background: #fafafa;
+}
+
+.input_user::placeholder, .input_pass::placeholder {
+    color: #999;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.line {
+    flex: 1;
+    height: 1px;
+    background: #dbdbdb;
+}
+
+.or {
+    margin: 0 10px;
+    color: #8e8e8e;
+    font-weight: 500;
+}
+
+.register_container {
+    margin-top: 10px;
+}
+
+.register_text {
+    color: #262626;
+    font-size: 14px;
+    display: inline;
+}
+
+.register_btn {
+    color: #0a6e28c7;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline;
+}
+
+
