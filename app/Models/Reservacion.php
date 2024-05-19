@@ -9,9 +9,18 @@ class Reservacion extends Model
 {
     use HasFactory;
 
-    protected $table='reservacion';
+    static $rules = [
+	//'id_resercacion' => 'required',
+	'id_cliente' => 'required',
+	'id_servicio' => 'required',
+	'id_estado' => 'required',
+    'metodo_pago_reservacion' => 'required',
+	'fecha_hora_reservacion' => 'required',
+    ];
 
+    protected $table='reservacion';
     protected $primaryKey='id_reservacion';
+    protected $perPage = 20;
 
     public $timestamps=false;
 

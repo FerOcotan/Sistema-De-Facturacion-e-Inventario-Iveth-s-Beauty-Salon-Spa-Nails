@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/sliderbar.css">
     <link rel="stylesheet" href="css/factura.css">
     <link rel="stylesheet" href="css/modal.css">
+
 </head>
 <body>
 
@@ -24,7 +25,8 @@
             </div>
             <button class="boton">
                 <ion-icon name="print-outline"></ion-icon>
-                <a href="{{ route('venta.index') }}" class="btn btn-primary">Facturas</a>
+                <a href="{{ route('venta.index') }}" >Facturas</a>
+              
             </button>
         </div>
 
@@ -32,38 +34,38 @@
             <ul>
                 <li>
                     <a id="#" href="#">
-                        <ion-icon name="mail-unread-outline"></ion-icon>
-                        <span>Inbox</span>
+                    <ion-icon name="server-outline"></ion-icon>
+                        <span>Productos</span>
                     </a>
                 </li>
                 <li>
                     <a  href="#">
-                        <ion-icon name="star-outline"></ion-icon>
-                        <span>Starred</span>
+                    <ion-icon name="people-circle-outline"></ion-icon>
+                        <span>Provedores</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <ion-icon name="paper-plane-outline"></ion-icon>
-                        <span>Sent</span>
+                    <ion-icon name="woman-outline"></ion-icon>
+                        <span>Servicios</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <ion-icon name="document-text-outline"></ion-icon>
-                        <span>Drafts</span>
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+                <li>
+                <a href="{{ route('reservacion.index') }}" >
+                    <ion-icon name="calendar-outline"></ion-icon>
+                        <span>Citas</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <ion-icon name="bookmark-outline"></ion-icon>
-                        <span>Important</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <ion-icon name="alert-circle-outline"></ion-icon>
-                        <span>Spam</span>
+                    <ion-icon name="archive-outline"></ion-icon>
+                        <span>Pedidos</span>
                     </a>
                 </li>
                 <li>

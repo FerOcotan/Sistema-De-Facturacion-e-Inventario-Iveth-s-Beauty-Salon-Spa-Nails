@@ -17,7 +17,7 @@ menu.addEventListener("click",()=>{
         menu.children[0].style.display = "block";
         menu.children[1].style.display = "none";
     }
-    if(window.innerWidth<=320){
+    if(window.innerWidth<=1000){
         barraLateral.classList.add("mini-barra-lateral");
         main.classList.add("min-main");
         spans.forEach((span)=>{
