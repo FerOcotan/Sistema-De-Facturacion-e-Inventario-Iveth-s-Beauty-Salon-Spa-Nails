@@ -6,6 +6,7 @@
     <title>Sidebar</title>
     <link rel="stylesheet" href="css/sliderbar.css">
     <link rel="stylesheet" href="css/factura.css">
+    <link rel="stylesheet" href="css/modal.css">
 </head>
 <body>
 
@@ -110,7 +111,7 @@
 
     <main>
     
-        
+        @yield('contenido')
         
     </main>
 
@@ -118,5 +119,6 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="js/darkmode.js"></script>
+    <script src="js/modal.js"></script>
 </body>
 </html>
