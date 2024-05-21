@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+
+
     <!-- INICIO DEL NAVBAR -->
     <header>
         <nav class="navbarTop ps-3 pe-5">
@@ -20,7 +22,9 @@
                 </div>
             </a>
 
-                            <div class="search-container">
+            
+            
+            <div class="search-container">
                 <input type="search" id="site-search" name="q" />
                 <button class="btn-search">
                     <i class="fas fa-search"></i>
