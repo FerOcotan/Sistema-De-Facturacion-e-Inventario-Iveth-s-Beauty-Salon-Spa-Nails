@@ -48,14 +48,14 @@ Route::post('/registro', [UserController::class, 'register'])->name('registro');
 Route::resource('venta', VentaController::class);
 
 //Ruta de reservacion para ver desde el empleado
-Route::resource('reservacion', ReservacionController2::class);
+Route::resource('reservacionempleado', ReservacionController2::class);
 
 //ruta de servicio para ver desde el empleado
-Route::resource('servicio', ServicioController2::class);
+Route::resource('servicioempleado', ServicioController2::class);
 
 //ruta de proveedor para ver desde el empleado
 Route::resource('proveedor', ProveedorController::class);
 
 //ruta de producto para ver desde el empleado
-Route::resource('producto', ProductoController2::class);
+Route::resource('productoempleado', ProductoController2::class);
 

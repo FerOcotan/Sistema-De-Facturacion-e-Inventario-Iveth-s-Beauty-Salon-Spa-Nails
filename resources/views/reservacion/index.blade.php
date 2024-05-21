@@ -9,7 +9,7 @@
     <div class="container">
         <h1>Reservaciones</h1>
          <!-- Formulario de filtro por fecha -->
-         <form action="{{ route('reservacion.index') }}" method="GET" class="form-inline mb-3">
+         <form action="{{ route('reservacionempleado.index') }}" method="GET" class="form-inline mb-3">
             <div class="form-group mr-2">
                 <label for="fecha" class="mr-2">Filtrar por Fecha:</label>
                 <input type="date" class="form-control" id="fecha" name="fecha" value="{{ request('fecha') }}">
@@ -32,7 +32,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('reservacion.store') }}" method="POST">
+                        <form action="{{ route('reservacionempleado.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="id_cliente" class="form-label">Cliente</label>
@@ -73,7 +73,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($reservacion as $reservacion)
+                @foreach ($reservacionempleado as $reservacion)
                     <tr>
                         <td>{{ $reservacion->id_reservacion }}</td>
                         <td>{{ $reservacion->id_cliente }}</td>
@@ -135,7 +135,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('reservacion.update', $reservacion->id_reservacion) }}" method="POST">
+                                    <form action="{{ route('reservacionempleado.update', $reservacion->id_reservacion) }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <div class="mb-3">
@@ -180,7 +180,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                    <form action="{{ route('reservacion.destroy', $reservacion->id_reservacion) }}" method="POST" style="display:inline;">
+                                    <form action="{{ route('reservacionempleado.destroy', $reservacion->id_reservacion) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Eliminar</button>

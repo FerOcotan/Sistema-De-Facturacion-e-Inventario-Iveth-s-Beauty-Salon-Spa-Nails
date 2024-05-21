@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li>
-                <a href="{{ route('reservacion.index') }}" >
+                <a href="{{ route('reservacionempleado.index') }}" >
                     <ion-icon name="calendar-outline"></ion-icon>
                         <span>Citas</span>
                     </a>

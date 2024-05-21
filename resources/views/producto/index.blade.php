@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Producto</h1>
-    <a href="{{ route('producto.create') }}" class="btn btn-primary">Crear Producto</a>
+    <a href="{{ route('productoempleado.create') }}" class="btn btn-primary">Crear Producto</a>
     <table class="table">
         <thead>
             <tr>
@@ -22,9 +22,9 @@
                     <td>{{ $producto->precio_producto }}</td>
                     <td>{{ $producto->existencias }}</td>
                     <td>
-                        <a href="{{ route('producto.show', $producto->id_producto) }}" class="btn btn-info">Ver</a>
-                        <a href="{{ route('producto.edit', $producto->id_producto) }}" class="btn btn-warning">Editar</a>
-                        <form action="{{ route('producto.destroy', $producto->id_producto) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('productoempleado.show', $producto->id_producto) }}" class="btn btn-info">Ver</a>
+                        <a href="{{ route('productoempleado.edit', $producto->id_producto) }}" class="btn btn-warning">Editar</a>
+                        <form action="{{ route('productoempleado.destroy', $producto->id_producto) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Eliminar</button>
