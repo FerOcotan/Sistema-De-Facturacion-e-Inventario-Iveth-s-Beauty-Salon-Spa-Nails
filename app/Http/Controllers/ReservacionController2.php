@@ -16,16 +16,16 @@ class ReservacionController2 extends Controller
         return View('almacen.reservaciones.index', compact('servicios', 'cliente'));
         */
 
-        $reservacion = Reservacion::all();
-        return view('reservacion.index', compact('reservacion'));
+        $reservacionempleado = Reservacion::all();
+        return view('reservacion.index', compact('reservacionempleado'));
     }
 
     // Muestra el formulario para crear una nueva venta
     public function create()
     {
   
-        $reservacion = new Reservacion();
-        return view('reservacion.create', compact('reservacion'));
+        $reservacionempleado = new Reservacion();
+        return view('reservacion.create', compact('reservacionempleado'));
     }
 
     // Almacena una nueva venta en la base de datos
@@ -35,42 +35,42 @@ class ReservacionController2 extends Controller
         
         try 
         {
-            $reservacion = new Reservacion();
-            $reservacion->id_cliente = $request->id_cliente;
-            $reservacion->id_servicio = $request->id_servicio;
-            $reservacion->id_estado = $request->id_estado;
-            $reservacion->metodo_pago_reservacion = $request->metodo_pago_reservacion;
-            $reservacion->fecha_hora_reservacion = $request->fecha_hora_reservacion;
+            $reservacionempleado = new Reservacion();
+            $reservacionempleado->id_cliente = $request->id_cliente;
+            $reservacionempleado->id_servicio = $request->id_servicio;
+            $reservacionempleado->id_estado = $request->id_estado;
+            $reservacionempleado->metodo_pago_reservacion = $request->metodo_pago_reservacion;
+            $reservacionempleado->fecha_hora_reservacion = $request->fecha_hora_reservacion;
 
-            if ($reservacion->save()) 
+            if ($reservacionempleado->save()) 
             {
-                return redirect()->route('reservacion.index')->with('success', 'Registro exitoso.');
+                return redirect()->route('reservacionempleado.index')->with('success', 'Registro exitoso.');
             } 
             else 
             {
                 
-                return redirect()->route('reservacion.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
+                return redirect()->route('reservacionempleado.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
             }
         } 
         catch (\Exception $e) 
         {
                 
-            return redirect()->route('reservacion.create')->with('error', 'Hubo un problema al procesar el registro: ' . $e->getMessage());
+            return redirect()->route('reservacionempleado.create')->with('error', 'Hubo un problema al procesar el registro: ' . $e->getMessage());
         }     
     }
 
     // Muestra una venta específica
     public function show($id)
     {
-        $reservacion = Reservacion::findOrFail($id);
-        return view('reservacion.show', compact('reservacion'));
+        $reservacionempleado = Reservacion::findOrFail($id);
+        return view('reservacion.show', compact('reservacionempleado'));
     }
 
     // Muestra el formulario para editar una venta existente
     public function edit($id)
     {
-        $reservacion = Reservacion::findOrFail($id);
-        return view('reservacion.edit', compact('reservacion'));
+        $reservacionempleado = Reservacion::findOrFail($id);
+        return view('reservacion.edit', compact('reservacionempleado'));
     }
 
     // Actualiza una venta existente en la base de datos
@@ -84,10 +84,10 @@ class ReservacionController2 extends Controller
             'fecha_hora_reservacion' => 'required|date',
         ]);
     
-        $reservacion = Reservacion::findOrFail($id);
-        $reservacion->update($validatedData);
+        $reservacionempleado = Reservacion::findOrFail($id);
+        $reservacionempleado->update($validatedData);
     
-        return redirect()->route('reservacion.index')
+        return redirect()->route('reservacionempleado.index')
             ->with('success', 'Venta actualizada con éxito');
     }
 
@@ -95,9 +95,9 @@ class ReservacionController2 extends Controller
     // Elimina una venta específica de la base de datos
     public function destroy($id)
     {
-        $reservacion = Reservacion::findOrFail($id);
-        $reservacion->delete();
+        $reservacionempleado = Reservacion::findOrFail($id);
+        $reservacionempleado->delete();
 
-        return redirect()->route('reservacion.index')->with('success', 'Venta eliminada con éxito');
+        return redirect()->route('reservacionempleado.index')->with('success', 'Reservacion eliminada con éxito');
     }
 }
