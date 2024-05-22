@@ -372,6 +372,17 @@ main.min-main{
 
 
 
+.barra-lateral {
+    transition: width 0.3s;
+}
+
+.min-main {
+    transition: margin-left 0.3s;
+}
+
+.oculto {
+    display: none;
+}
 
 
 
