@@ -1,3 +1,9 @@
+@include('includes.sidebar')
+@include('includes.bostrapcrud')
+
+<main>
+
+
 <div class="container">
     <h1>Producto</h1>
     <a href="{{ route('compra.create') }}" class="btn btn-primary">Crear Compra</a>
@@ -11,6 +17,7 @@
                 <th>Cantidad</th>
                 <th>Total</th>
                 <th>Fecha</th>
+                <th class="text-center">Acciones</th>
         </thead>
         <tbody>
             @foreach ($compra as $compra)
@@ -36,3 +43,6 @@
         </tbody>
     </table>
 </div>
+
+
+</main>

@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                <a href="{{ route('cliente.index') }}" >
                     <ion-icon name="person-circle-outline"></ion-icon>
                         <span>Clientes</span>
                     </a>
@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                <a href="{{ route('compra.index') }}" >
                     <ion-icon name="archive-outline"></ion-icon>
                         <span>Pedidos</span>
                     </a>

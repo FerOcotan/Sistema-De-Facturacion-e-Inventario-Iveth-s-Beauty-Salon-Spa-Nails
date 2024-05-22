@@ -1,3 +1,9 @@
+@include('includes.sidebar')
+@include('includes.bostrapcrud')
+
+<main>
+
+
 <div class="container">
     <h1>Producto</h1>
     <a href="{{ route('cliente.create') }}" class="btn btn-primary">Crear Cliente</a>
@@ -11,6 +17,7 @@
                 <th>Direccion</th>
                 <th>Dui</th>
                 <th>Email</th>
+                <th class="text-center">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +32,7 @@
                     <td>{{ $cliente->email_cliente }} </td>
                     <td>
                         <a href="{{ route('cliente.show', $cliente->id_cliente) }}" class="btn btn-info">Ver</a>
-                        <a href="{{ route('cliente.edit', $cliente->id_cliente) }}" class="btn btn-warning">Editar</a>
+                        
                         <form action="{{ route('cliente.destroy', $cliente->id_cliente) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
@@ -37,3 +44,5 @@
         </tbody>
     </table>
 </div>
+
+</main>

@@ -29,52 +29,50 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                       <form action="{{ route('reservacionempleado.store') }}" method="POST">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="id_cliente" class="form-label">Cliente</label>
-                            <select class="form-control" id="id_cliente" name="id_cliente" required>
-                            <option value="">Seleccione un Cliente</option>
-                            @foreach ($clientes as $cliente)
-                                <option value="{{ $cliente->id_cliente }}">{{ $cliente->nombre_completo }}</option>
-                            @endforeach
-                        </select>
-
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_servicio" class="form-label">Servicio</label>
-                            <select class="form-control" id="id_servicio" name="id_servicio" required>
-                                <option value="">Seleccione un Servicio</option>
-                                @foreach ($servicios as $id_servicio => $nombre_servicio)
-                                    <option value="{{ $id_servicio }}">{{ $nombre_servicio }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_estado" class="form-label">Estado</label>
-                            <select class="form-control" id="id_estado" name="id_estado" required>
-                                <option value="">Seleccione un Estado</option>
-                                @foreach ($estados as $id_estado => $nombre_estado)
-                                    <option value="{{ $id_estado }}">{{ $nombre_estado }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="metodo_pago_reservacion" class="form-label">Método de Pago</label>
-                            <select class="form-control" id="metodo_pago_reservacion" name="metodo_pago_reservacion" required>
-                                <option value="">Seleccione un Método de Pago</option>
-                                @foreach ($metodosPago as $metodoPago)
-                                    <option value="{{ $metodoPago }}">{{ $metodoPago }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="fecha_hora_reservacion" class="form-label">Fecha</label>
-                            <input type="datetime-local" class="form-control" id="fecha_hora_reservacion" name="fecha_hora_reservacion" placeholder="Fecha" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </form>
-
+                        <form action="{{ route('reservacionempleado.store') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="id_cliente" class="form-label">Cliente</label>
+                                <select class="form-control" id="id_cliente" name="id_cliente" required>
+                                    <option value="">Seleccione un Cliente</option>
+                                    @foreach ($clientes as $cliente)
+                                        <option value="{{ $cliente->id_cliente }}">{{ $cliente->nombre_cliente }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_servicio" class="form-label">Servicio</label>
+                                <select class="form-control" id="id_servicio" name="id_servicio" required>
+                                    <option value="">Seleccione un Servicio</option>
+                                    @foreach ($servicios as $id_servicio => $nombre_servicio)
+                                        <option value="{{ $id_servicio }}">{{ $nombre_servicio }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_estado" class="form-label">Estado</label>
+                                <select class="form-control" id="id_estado" name="id_estado" required>
+                                    <option value="">Seleccione un Estado</option>
+                                    @foreach ($estados as $id_estado => $nombre_estado)
+                                        <option value="{{ $id_estado }}">{{ $nombre_estado }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="metodo_pago_reservacion" class="form-label">Método de Pago</label>
+                                <select class="form-control" id="metodo_pago_reservacion" name="metodo_pago_reservacion" required>
+                                    <option value="">Seleccione un Método de Pago</option>
+                                    @foreach ($metodosPago as $metodoPago)
+                                        <option value="{{ $metodoPago }}">{{ $metodoPago }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fecha_hora_reservacion" class="form-label">Fecha</label>
+                                <input type="datetime-local" class="form-control" id="fecha_hora_reservacion" name="fecha_hora_reservacion" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -145,58 +143,59 @@
                         </div>
                     </div>
 
-                    <!-- Modal de edición -->
-                    <div class="modal fade" id="editarReservacionModal{{ $reservacion->id_reservacion }}" tabindex="-1" aria-labelledby="editarReservacionModalLabel{{ $reservacion->id_reservacion }}" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="editarReservacionModalLabel{{ $reservacion->id_reservacion }}">Editar Reservación</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ route('reservacionempleado.update', $reservacion->id_reservacion) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="mb-3">
-                                            <label for="id_cliente" class="form-label">Cliente</label>
-                                            <input type="text" class="form-control" id="id_cliente" name="id_cliente" value="{{ $reservacion->nombre_cliente }}" required readonly>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="id_servicio" class="form-label">Servicio</label>
-                                            <select class="form-control" id="id_servicio" name="id_servicio" required>
-                                                @foreach ($servicios as $id_servicio => $nombre_servicio)
-                                                    <option value="{{ $id_servicio }}" {{ $reservacion->id_servicio == $id_servicio ? 'selected' : '' }}>{{ $nombre_servicio }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                        <label for="id_estado" class="form-label">Estado</label>
-                                        <select class="form-control" id="id_estado" name="id_estado" required>
-                                            @foreach ($estados as $id_estado => $nombre_estado)
-                                                <option value="{{ $id_estado }}" {{ $reservacion->id_estado == $id_estado ? 'selected' : '' }}>{{ $nombre_estado }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="metodo_pago_reservacion" class="form-label">Método de Pago</label>
-                                        <select class="form-control" id="metodo_pago_reservacion" name="metodo_pago_reservacion" required>
-                                            @foreach ($metodosPago as $metodoPago)
-                                                <option value="{{ $metodoPago }}" {{ $reservacion->metodo_pago_reservacion == $metodoPago ? 'selected' : '' }}>{{ $metodoPago }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                        <div class="mb-3">
-                                            <label for="fecha_hora_reservacion" class="form-label">Fecha</label>
-                                            <input type="datetime-local" class="form-control" id="fecha_hora_reservacion" name="fecha_hora_reservacion" value="{{ $reservacion->fecha_hora_reservacion }}" required>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Guardar</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                  <!-- Edit Modal -->
+<div class="modal fade" id="editarReservacionModal{{ $reservacion->id_reservacion }}" tabindex="-1" aria-labelledby="editarReservacionModalLabel{{ $reservacion->id_reservacion }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarReservacionModalLabel{{ $reservacion->id_reservacion }}">Editar Reservación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('reservacionempleado.update', $reservacion->id_reservacion) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="mb-3">
+                        <label for="id_cliente" class="form-label">Cliente</label>
+                        <input type="text" class="form-control" id="id_cliente" name="id_cliente" value="{{ $reservacion->nombre_cliente }}" readonly>
                     </div>
+                    <div class="mb-3">
+                        <label for="id_servicio" class="form-label">Servicio</label>
+                        <select class="form-control" id="id_servicio" name="id_servicio" required>
+                            @foreach ($servicios as $id_servicio => $nombre_servicio)
+                                <option value="{{ $id_servicio }}" {{ $reservacion->id_servicio == $id_servicio ? 'selected' : '' }}>{{ $nombre_servicio }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_estado" class="form-label">Estado</label>
+                        <select class="form-control" id="id_estado" name="id_estado" required>
+                            @foreach ($estados as $id_estado => $nombre_estado)
+                                <option value="{{ $id_estado }}" {{ $reservacion->id_estado == $id_estado ? 'selected' : '' }}>{{ $nombre_estado }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="metodo_pago_reservacion" class="form-label">Método de Pago</label>
+                        <select class="form-control" id="metodo_pago_reservacion" name="metodo_pago_reservacion" required>
+                            @foreach ($metodosPago as $metodoPago)
+                                <option value="{{ $metodoPago }}" {{ $reservacion->metodo_pago_reservacion == $metodoPago ? 'selected' : '' }}>{{ $metodoPago }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fecha_hora_reservacion" class="form-label">Fecha</label>
+                        <input type="datetime-local" class="form-control" id="fecha_hora_reservacion" name="fecha_hora_reservacion" value="{{ $reservacion->fecha_hora_reservacion }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
                     <!-- Modal de confirmación de eliminación -->
                     <div class="modal fade" id="eliminarReservacionModal{{ $reservacion->id_reservacion }}" tabindex="-1" aria-labelledby="eliminarReservacionModalLabel{{ $reservacion->id_reservacion }}" aria-hidden="true">
