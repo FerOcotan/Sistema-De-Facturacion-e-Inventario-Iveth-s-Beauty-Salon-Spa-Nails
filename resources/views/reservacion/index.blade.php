@@ -137,7 +137,7 @@
                                         @method('PUT')
                                         <div class="mb-3">
                                             <label for="id_cliente" class="form-label">Cliente</label>
-                                            <input type="text" class="form-control" id="id_cliente" name="id_cliente" value="{{ $reservacion->id_cliente }}" required>
+                                            <input type="text" class="form-control" id="id_cliente" name="id_cliente" value="{{ $reservacion->id_cliente }}" required readonly>
                                         </div>
                                         <div class="mb-3">
                                             <label for="id_servicio" class="form-label">Servicio</label>

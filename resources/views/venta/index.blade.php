@@ -68,7 +68,7 @@
                         @method('PUT')
                         <div class="mb-3">
                             <label for="id_cliente" class="form-label">Cliente</label>
-                            <input type="text" class="form-control" id="id_cliente" name="id_cliente" value="{{ $venta->id_cliente }}" required>
+                            <input type="text" class="form-control" id="id_cliente" name="id_cliente" value="{{ $venta->id_cliente }}" required readonly>
                         </div>
                         <div class="mb-3">
                             <label for="id_empleado" class="form-label">Empleado</label>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="total_venta" class="form-label">Total</label>
-                            <input type="text" class="form-control" id="total_venta" name="total_venta" value="{{ $venta->total_venta }}" required>
+                            <input type="text" class="form-control" id="total_venta" name="total_venta" value="{{ $venta->total_venta }}" required readonly>
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
