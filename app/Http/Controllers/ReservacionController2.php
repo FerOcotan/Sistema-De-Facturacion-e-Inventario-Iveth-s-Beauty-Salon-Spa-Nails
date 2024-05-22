@@ -4,21 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ReservacionController2 extends Controller
 {
-    public function index()
-    {
-        /*
-        $servicios = Servicio::all();
-        $cliente = Cliente::where('email_cliente', session('correo'));
+    public function index(Request $request)
+{
+    $fecha = $request->input('fecha');
 
-        return View('almacen.reservaciones.index', compact('servicios', 'cliente'));
-        */
+    $query = DB::table('reservacion')
+        ->join('cliente', 'reservacion.id_cliente', '=', 'cliente.id_cliente')
+        ->join('servicio', 'reservacion.id_servicio', '=', 'servicio.id_servicio')
+        ->join('estado', 'reservacion.id_estado', '=', 'estado.id_estado')
+        ->select(
+            'reservacion.id_reservacion',
+            'cliente.nombre_cliente as nombre_cliente',
+            'servicio.id_servicio', // Agregamos id_servicio
+            'servicio.nombre_servicio as nombre_servicio',
+            'estado.id_estado', // Agregamos id_estado
+            'estado.nombre_estado as estado',
+            'reservacion.metodo_pago_reservacion',
+            'reservacion.fecha_hora_reservacion'
+        );
 
-        $reservacionempleado = Reservacion::all();
-        return view('reservacion.index', compact('reservacionempleado'));
+    if ($fecha) {
+        $query->whereDate('reservacion.fecha_hora_reservacion', $fecha);
     }
+
+    $reservaciones = $query->get();
+    $clientes = DB::table('cliente')->get(['id_cliente', DB::raw("CONCAT(nombre_cliente, ' ', apellido_cliente) AS nombre_completo")]);
+
+
+    $servicios = DB::table('servicio')->pluck('nombre_servicio', 'id_servicio');
+    $estados = DB::table('estado')->pluck('nombre_estado', 'id_estado');
+    $metodosPago = ['Efectivo', 'Tarjeta', 'Transferencia'];
+
+    return view('reservacion.index', compact('reservaciones', 'servicios', 'estados', 'metodosPago','clientes'));
+}
+
 
     // Muestra el formulario para crear una nueva venta
     public function create()
