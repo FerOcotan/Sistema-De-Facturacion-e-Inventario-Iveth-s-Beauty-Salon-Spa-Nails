@@ -1,63 +1,14 @@
 @include('includes.sidebar')
-
-<head>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-</head>
+@include('includes.bostrapcrud')
 
 
 <main>
     <div class="container">
-        <h1>Facturas</h1>
+        <h1 class="text-center">Facturas</h1>
         <!-- Botón para abrir el modal de creación -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearVentaModal">
-            Crear Factura
-        </button>
+        <a href="{{ route('empleado') }}" class="btn btn-primary">Nueva factura</a>
         
-        <!-- Modal de creación -->
-        <div class="modal fade" id="crearVentaModal" tabindex="-1" aria-labelledby="crearVentaModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="crearVentaModalLabel">Crear Factura</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{ route('venta.store') }}" method="POST">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="id_cliente" class="form-label">Cliente</label>
-                                <input type="text" class="form-control" id="id_cliente" name="id_cliente" placeholder="Cliente" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="id_empleado" class="form-label">Empleado</label>
-                                <input type="text" class="form-control" id="id_empleado" name="id_empleado" placeholder="Empleado" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="metodo_pago_venta" class="form-label">Metodo Pago</label>
-                                <input type="text" class="form-control" id="metodo_pago_venta" name="metodo_pago_venta" placeholder="Metodo pago" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="fecha_hora_venta" class="form-label">Fecha</label>
-                                <input type="text" class="form-control" id="fecha_hora_venta" name="fecha_hora_venta" placeholder="Fecha" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="total_venta" class="form-label">Total</label>
-                                <input type="text" class="form-control" id="total_venta" name="total_venta" placeholder="Total" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+       
         <table class="table">
             <thead>
                 <tr>
@@ -67,7 +18,7 @@
                     <th>Método de Pago</th>
                     <th>Fecha</th>
                     <th>Total</th>
-                    <th>Acciones</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -83,7 +34,7 @@
 
                         <!-- Botón para abrir el modal de detalles -->
                      <!-- Botón de descarga de PDF -->
-                    <button type="button"  class="btn btn-danger">
+                    <button type="button"  class="btn btn-pdf">
                         <i class="bi bi-file-pdf"></i> 
                     </button>
 
