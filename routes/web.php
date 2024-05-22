@@ -10,6 +10,9 @@ use App\Http\Controllers\ServicioController2;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ProductoController2;
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CompraController;
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -43,6 +46,14 @@ Route::get('/empleado', [EmpleadosController::class, 'empleado'])->name('emplead
 Route::get('/registro', [UserController::class, 'showRegistrationForm'])->name('registro.form');
 Route::post('/registro', [UserController::class, 'register'])->name('registro');
 
+//Ruta para ver el about us
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
+//Rutare para dirigir el about us desde otro lugar.
+//return redirect()->route('about.index');
+
+
+
 
 //Ruta de venta
 Route::resource('venta', VentaController::class);
@@ -58,4 +69,11 @@ Route::resource('proveedor', ProveedorController::class);
 
 //ruta de producto para ver desde el empleado
 Route::resource('productoempleado', ProductoController2::class);
+
+//ruta de cliente para ver desde el empleado
+Route::resource('cliente', ClienteController::class);
+
+//ruta de compra para ver desde el empleado
+Route::resource('compra', CompraController::class);
+
 

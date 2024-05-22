@@ -32,6 +32,7 @@ class LoginController extends Controller
             $request->session()->put('correo', $request->correo);
             $request->session()->put('tipo_usuario', 'cliente');
             return redirect()->action([ProductoController::class, 'index']);
+            
         }
         else
         {
