@@ -39,18 +39,18 @@ class ProductoController2 extends Controller
 
             if ($producto->save()) 
             {
-                return redirect()->route('producto.index')->with('success', 'Registro exitoso.');
+                return redirect()->route('productoempleado.index')->with('success', 'Registro exitoso.');
             } 
             else 
             {
                 
-                return redirect()->route('producto.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
+                return redirect()->route('productoempleado.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
             }
         } 
         catch (\Exception $e) 
         {
                 
-            return redirect()->route('producto.create')->with('error', 'Hubo un problema al procesar el registro: ' . $e->getMessage());
+            return redirect()->route('productoempleado.create')->with('error', 'Hubo un problema al procesar el registro: ' . $e->getMessage());
         }     
     }
 
@@ -82,7 +82,7 @@ class ProductoController2 extends Controller
         $producto = Producto::findOrFail($id);
         $producto->update($validatedData);
     
-        return redirect()->route('producto.index')
+        return redirect()->route('productoempleado.index')
             ->with('success', 'Producto actualizada con éxito');
     }
 
@@ -93,6 +93,6 @@ class ProductoController2 extends Controller
         $producto = Producto::findOrFail($id);
         $producto->delete();
 
-        return redirect()->route('producto.index')->with('success', 'Producto eliminada con éxito');
+        return redirect()->route('productoempleado.index')->with('success', 'Producto eliminada con éxito');
     }
 }

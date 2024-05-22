@@ -1,7 +1,7 @@
 
 <div class="container">
     <h1>Crear Producto</h1>
-    <form action="{{ route('producto.store') }}" method="POST">
+    <form action="{{ route('productoempleado.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="id_categoria" class="form-label">Categoria</label>

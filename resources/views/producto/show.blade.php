@@ -6,5 +6,5 @@
     <p><strong>Nombre:</strong> {{ $producto->nombre_producto }}</p>
     <p><strong>Precio:</strong> {{ $producto->precio_producto }}</p>
     <p><strong>Existencias:</strong> {{ $producto->existencias }}</p>
-    <a href="{{ route('producto.index') }}" class="btn btn-secondary">Volver</a>
+    <a href="{{ route('productoempleado.index') }}" class="btn btn-secondary">Volver</a>
 </div>

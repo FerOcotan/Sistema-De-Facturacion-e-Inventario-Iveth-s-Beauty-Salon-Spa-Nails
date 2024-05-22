@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Editar producto</h1>
-    <form action="{{ route('producto.update', $producto->id_producto) }}" method="POST">
+    <form action="{{ route('productoempleado.update', $producto->id_producto) }}" method="POST">
         @csrf
         @method('PATCH')
         <div class="mb-3">

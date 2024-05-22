@@ -5,5 +5,5 @@
     <p><strong>Nombre:</strong> {{ $servicio->nombre_servicio }}</p>
     <p><strong>Descripcion:</strong> {{ $servicio->descripcion_servicio }}</p>
     <p><strong>Precio:</strong> {{ $servicio->precio_servicio }}</p>
-    <a href="{{ route('servicio.index') }}" class="btn btn-secondary">Volver</a>
+    <a href="{{ route('servicioempleado.index') }}" class="btn btn-secondary">Volver</a>
 </div>

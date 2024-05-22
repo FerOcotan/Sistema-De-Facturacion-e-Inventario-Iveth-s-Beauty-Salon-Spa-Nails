@@ -38,18 +38,18 @@ class ServicioController2 extends Controller
 
             if ($servicio->save()) 
             {
-                return redirect()->route('servicio.index')->with('success', 'Registro exitoso.');
+                return redirect()->route('servicioempleado.index')->with('success', 'Registro exitoso.');
             } 
             else 
             {
                 
-                return redirect()->route('servicio.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
+                return redirect()->route('servicioempleado.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
             }
         } 
         catch (\Exception $e) 
         {
                 
-            return redirect()->route('servicio.create')->with('error', 'Hubo un problema al procesar el registro: ' . $e->getMessage());
+            return redirect()->route('servicioempleado.create')->with('error', 'Hubo un problema al procesar el registro: ' . $e->getMessage());
         }     
     }
 
@@ -80,7 +80,7 @@ class ServicioController2 extends Controller
         $servicio = Servicio::findOrFail($id);
         $servicio->update($validatedData);
     
-        return redirect()->route('servicio.index')
+        return redirect()->route('servicioempleado.index')
             ->with('success', 'Servicio actualizada con éxito');
     }
 
@@ -91,6 +91,6 @@ class ServicioController2 extends Controller
         $servicio = Servicio::findOrFail($id);
         $servicio->delete();
 
-        return redirect()->route('servicio.index')->with('success', 'Servicio eliminada con éxito');
+        return redirect()->route('servicioempleado.index')->with('success', 'Servicio eliminada con éxito');
     }
 }
