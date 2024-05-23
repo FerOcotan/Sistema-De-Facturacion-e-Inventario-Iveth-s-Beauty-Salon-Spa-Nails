@@ -36,9 +36,9 @@ class ServicioController2 extends Controller
             );
 
             $servicios = $query->get();
+            $estado = DB::table('estado')->pluck('nombre_estado', 'id_estado');
 
-
-        return view('servicio.index', compact('servicios'));
+        return view('servicio.index', compact('servicios','estado'));
 
 
      

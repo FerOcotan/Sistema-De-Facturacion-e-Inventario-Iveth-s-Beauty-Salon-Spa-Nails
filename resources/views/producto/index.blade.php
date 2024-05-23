@@ -23,13 +23,24 @@
                     <div class="modal-body">
                         <form action="{{ route('productoempleado.store') }}" method="POST">
                             @csrf
+
                             <div class="mb-3">
                                 <label for="id_categoria" class="form-label">Categoría</label>
-                                <input type="text" class="form-control" id="id_categoria" name="id_categoria" placeholder="Categoría" required>
+                                <select class="form-control" id="id_categoria" name="id_categoria" required>
+                                    <option value="">Seleccione una categoria</option>
+                                    @foreach ($categoria as $categorias)
+                                        <option value="{{ $categorias->id_categoria }}">{{ $categorias->nombre_categoria}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-3">
-                                <label for="id_estado" class="form-label">Estado</label>
-                                <input type="text" class="form-control" id="id_estado" name="id_estado" placeholder="Estado" required>
+                                <label for="id_categoria" class="form-label">Estado</label>
+                                <select class="form-control" id="id_estado" name="id_estado" required>
+                                    <option value="">Seleccione el estado</option>
+                                    @foreach ($estado as $id_estado => $nombre_estado)
+                                        <option value="{{ $id_estado }}">{{ $nombre_estado }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="nombre_producto" class="form-label">Nombre</label>
@@ -131,13 +142,23 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="mb-3">
-                                            <label for="id_categoria" class="form-label">Categoría</label>
-                                            <input type="text" class="form-control" id="id_categoria" name="id_categoria" value="{{ $producto->id_categoria }}" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="id_estado" class="form-label">Estado</label>
-                                            <input type="text" class="form-control" id="id_estado" name="id_estado" value="{{ $producto->id_estado }}" required>
-                                        </div>
+                                                <label for="id_categoria" class="form-label">Categoría</label>
+                                                <select class="form-control" id="id_categoria" name="id_categoria" required>
+                                                    <option value="">Seleccione una categoria</option>
+                                                    @foreach ($categoria as $categorias)
+                                                        <option value="{{ $categorias->id_categoria }}">{{ $categorias->nombre_categoria}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                <label for="id_categoria" class="form-label">Estado</label>
+                                <select class="form-control" id="id_estado" name="id_estado" required>
+                                    <option value="">Seleccione el estado</option>
+                                    @foreach ($estado as $id_estado => $nombre_estado)
+                                        <option value="{{ $id_estado }}">{{ $nombre_estado }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                                         <div class="mb-3">
                                             <label for="nombre_producto" class="form-label">Nombre</label>
                                             <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" value="{{ $producto->nombre_producto }}" required>

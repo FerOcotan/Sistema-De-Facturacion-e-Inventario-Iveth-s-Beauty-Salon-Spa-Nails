@@ -29,8 +29,12 @@ class CompraController extends Controller
                 'compra.total_compra as total_compra',
                 'compra.fecha_hora_compra as fecha_hora_compra'
             );
+
+        $proveedor = DB::table('proveedor')->pluck('nombre_proveedor', 'id_proveedor');
         $compras = $query->get();
-        return view('compra.index', compact('compras'));
+        $empleados = DB::table('empleado')->pluck('nombre_empleado', 'id_empleado');
+        $productos = DB::table('producto')->pluck('nombre_producto', 'id_producto');
+        return view('compra.index', compact('compras','proveedor','empleados','productos'));
 
     }
 

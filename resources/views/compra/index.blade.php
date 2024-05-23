@@ -26,17 +26,33 @@
                     <form action="{{ route('compra.store') }}" method="POST">
         @csrf
         <div class="mb-3">
-            <label for="id_proveedor" class="form-label">Proveedor</label>
-            <input type="text" class="form-control" id="id_proveedor" name="id_proveedor" placeholder="Proveedor" required>
-        </div>
+         <label for="id_categoria" class="form-label">Provedores</label>
+         <select class="form-control" id="id_proveedor" name="id_proveedor" required>
+          <option value="">Seleccione el estado</option>
+          @foreach ($proveedor as $id_proveedor => $nombre_proveedor)
+           <option value="{{ $id_proveedor }}">{{ $nombre_proveedor }}</option>
+              @endforeach
+               </select>
+      </div>
+      <div class="mb-3">
+                        <label for="id_empleado" class="form-label">Empleado</label>
+                        <select class="form-control" id="id_empleado" name="id_empleado" required>
+                            <option value="">Selecciona un empleado</option>
+                            @foreach ($empleados as $id_empleado => $nombre_empleado)
+                        <option value="{{ $id_empleado }}">{{ $nombre_empleado }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+        
         <div class="mb-3">
-            <label for="id_empleado" class="form-label">Empleado</label>
-            <input type="text" class="form-control" id="id_empleado" name="id_empleado" placeholder="Empleado" required>
-        </div>
-        <div class="mb-3">
-            <label for="id_producto" class="form-label">Producto</label>
-            <input type="text" class="form-control" id="id_producto" name="id_producto" placeholder="Producto" required>
-        </div>
+                        <label for="id_empleado" class="form-label">Producto</label>
+                        <select class="form-control" id="id_producto" name="id_producto" required>
+                            <option value="">Selecciona un producto</option>
+                            @foreach ($productos as $id_producto => $nombre_producto)
+                        <option value="{{ $id_producto }}">{{ $nombre_producto }}</option>
+                            @endforeach
+                        </select>
+                    </div>
         <div class="mb-3">
             <label for="cantidad_compra" class="form-label">Cantidad</label>
             <input type="text" class="form-control" id="cantidad_compra" name="cantidad_compra" placeholder="Cantidad" required>
@@ -134,17 +150,32 @@
         @csrf
         @method('PATCH')
         <div class="mb-3">
-            <label for="id_proveedor" class="form-label">Proveedor</label>
-            <input type="text" name="id_proveedor" id="id_proveedor" class="form-control" value="{{ $compra->id_proveedor }}" required>
-        </div>
+         <label for="id_categoria" class="form-label">Provedores</label>
+         <select class="form-control" id="id_proveedor" name="id_proveedor" required>
+          <option value="">Seleccione el estado</option>
+          @foreach ($proveedor as $id_proveedor => $nombre_proveedor)
+           <option value="{{ $id_proveedor }}">{{ $nombre_proveedor }}</option>
+              @endforeach
+               </select>
+      </div>
         <div class="mb-3">
-            <label for="id_empleado" class="form-label">Empleado</label>
-            <input type="text" name="id_empleado" id="id_empleado" class="form-control" value="{{ $compra->id_empleado }}" required>
-        </div>
+                        <label for="id_empleado" class="form-label">Empleado</label>
+                        <select class="form-control" id="id_empleado" name="id_empleado" required>
+                            <option value="">Selecciona un empleado</option>
+                            @foreach ($empleados as $id_empleado => $nombre_empleado)
+                        <option value="{{ $id_empleado }}">{{ $nombre_empleado }}</option>
+                            @endforeach
+                        </select>
+                    </div>
         <div class="mb-3">
-            <label for="id_producto" class="form-label">Producto</label>
-            <input type="text" name="id_producto" id="id_producto" class="form-control" value="{{ $compra->id_producto}}" required>
-        </div>
+                        <label for="id_empleado" class="form-label">Producto</label>
+                        <select class="form-control" id="id_producto" name="id_producto" required>
+                            <option value="">Selecciona un producto</option>
+                            @foreach ($productos as $id_producto => $nombre_producto)
+                        <option value="{{ $id_producto }}">{{ $nombre_producto }}</option>
+                            @endforeach
+                        </select>
+                    </div>
         <div class="mb-3">
             <label for="cantidad_compra" class="form-label">Precio</label>
             <input type="text" name="cantidad_compra" id="cantidad_compra" class="form-control" value="{{ $compra->cantidad_compra }}" required>

@@ -36,8 +36,13 @@
                                 <input type="number" step="0.01" class="form-control" id="precio_servicio" name="precio_servicio" placeholder="Precio" required>
                             </div>
                             <div class="mb-3">
-                                <label for="id_estado" class="form-label">Estado</label>
-                                <input type="text" class="form-control" id="id_estado" name="id_estado" placeholder="Estado" required>
+                                <label for="id_categoria" class="form-label">Estado</label>
+                                <select class="form-control" id="id_estado" name="id_estado" required>
+                                    <option value="">Seleccione el estado</option>
+                                    @foreach ($estado as $id_estado => $nombre_estado)
+                                        <option value="{{ $id_estado }}">{{ $nombre_estado }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </form>
@@ -136,9 +141,14 @@
                                             <input type="number" step="0.01" class="form-control" id="precio_servicio" name="precio_servicio" value="{{ $servicio->precio_servicio }}" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="id_estado" class="form-label">Estado</label>
-                                            <input type="text" class="form-control" id="id_estado" name="id_estado" value="{{ $servicio->id_estado }}" required>
-                                        </div>
+                                <label for="id_categoria" class="form-label">Estado</label>
+                                <select class="form-control" id="id_estado" name="id_estado" required>
+                                    <option value="">Seleccione el estado</option>
+                                    @foreach ($estado as $id_estado => $nombre_estado)
+                                        <option value="{{ $id_estado }}">{{ $nombre_estado }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                     </form>
                                 </div>

@@ -28,14 +28,15 @@ class ProductoController2 extends Controller
                 'producto.precio_producto as precio_producto',
                 'producto.existencias as existencias',
             );
-        /* 
-        $categorias = DB::table('categoria')->pluck('nombre_categoria', 'id_categoria');
-        $estados = DB::table('estado')->pluck('nombre_estado', 'id_estado');
-        $productos = DB::table('producto')->get();
-        */
+
+        
+        $categoria = DB::table('categoria')->select('id_categoria', 'nombre_categoria')->get();
+        $estado = DB::table('estado')->pluck('nombre_estado', 'id_estado');
+      
+     
         $productos = $query->get();
 
-        return view('producto.index', compact('productos'));
+        return view('producto.index', compact('productos','categoria','estado'));
     
 
     }
