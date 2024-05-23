@@ -25,7 +25,7 @@
         </div>
         <div class="mb-3">
             <label for="fecha_hora_compra" class="form-label">Fecha</label>
-            <input type="text" class="form-control" id="fecha_hora_compra" name="fecha_hora_compra" placeholder="Fecha" required>
+            <input type="date" class="form-control" id="fecha_hora_compra" name="fecha_hora_compra" placeholder="Fecha" required>
         </div>
 
         <button type="submit" class="btn btn-primary" >Guardar</button>
