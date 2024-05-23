@@ -91,11 +91,11 @@ class VentaController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'id_cliente' => 'required',
+            //'id_cliente' => 'required',
             'id_empleado' => 'required',
             'metodo_pago_venta' => 'required',
             'fecha_hora_venta' => 'required|date',
-            'total_venta' => 'required|numeric',
+            //'total_venta' => 'required|numeric',
         ]);
     
         $venta = Venta::findOrFail($id);

@@ -58,7 +58,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($servicio as $servicio)
+                @foreach ($servicios as $servicio)
                     <tr>
                         <td>{{ $servicio->id_servicio }}</td>
                         <td>{{ $servicio->id_estado }}</td>

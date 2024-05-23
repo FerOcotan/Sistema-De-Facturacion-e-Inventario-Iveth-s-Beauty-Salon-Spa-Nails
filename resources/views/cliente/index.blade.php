@@ -5,7 +5,7 @@
 
 
 <div class="container">
-    <h1>Producto</h1>
+    <h1>Cliente</h1>
     <a href="{{ route('cliente.create') }}" class="btn btn-primary">Crear Cliente</a>
     <table class="table">
         <thead>

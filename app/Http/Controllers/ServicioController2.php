@@ -3,23 +3,55 @@
 namespace App\Http\Controllers;
 
 use App\Models\Servicio;
+//use App\Models\Estado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ServicioController2 extends Controller
 {
     public function index()
     {
 
+        /*
         $servicio = Servicio::all();
         return view('servicio.index', compact('servicio'));
+        */
+
+        /*
+        $servicio = Servicio::paginate();
+
+        return view('servicio.index', compact('servicio'))
+            ->with('i', (request()->input('page', 1) - 1) * $servicio->perPage());
+        */
+
+        $query = DB::table('servicio')
+            ->join('estado', 'servicio.id_estado', '=', 'estado.id_estado')
+            ->select(
+                'servicio.id_servicio as id_servicio',
+                'estado.nombre_estado as id_estado',
+                'servicio.nombre_servicio as nombre_servicio',
+                'servicio.descripcion_servicio as descripcion_servicio',
+                'servicio.precio_servicio as precio_servicio',
+            );
+
+            $servicios = $query->get();
+
+
+        return view('servicio.index', compact('servicios'));
+
+
+     
     }
 
     // Muestra el formulario para crear una nueva venta
     public function create()
     {
-  
+        /*
         $servicio = new Servicio();
         return view('servicio.create', compact('servicio'));
+        */
+
     }
 
     // Almacena una nueva venta en la base de datos

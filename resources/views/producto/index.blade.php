@@ -63,7 +63,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($producto as $producto)
+                @foreach ($productos as $producto)
                     <tr>
                         <td>{{ $producto->id_producto }}</td>
                         <td>{{ $producto->id_categoria }}</td>

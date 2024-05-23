@@ -4,14 +4,40 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ProductoController2 extends Controller
 {
     public function index()
     {
 
+        /*
         $producto = Producto::all();
         return view('producto.index', compact('producto'));
+        */
+
+        $query = DB::table('producto')
+            ->join('categoria', 'producto.id_categoria', '=', 'categoria.id_categoria')
+            ->join('estado', 'producto.id_estado', '=', 'estado.id_estado')
+            ->select(
+                'producto.id_producto as id_producto',
+                'categoria.nombre_categoria as id_categoria',
+                'estado.nombre_estado as id_estado',
+                'producto.nombre_producto as nombre_producto',
+                'producto.precio_producto as precio_producto',
+                'producto.existencias as existencias',
+            );
+        /* 
+        $categorias = DB::table('categoria')->pluck('nombre_categoria', 'id_categoria');
+        $estados = DB::table('estado')->pluck('nombre_estado', 'id_estado');
+        $productos = DB::table('producto')->get();
+        */
+        $productos = $query->get();
+
+        return view('producto.index', compact('productos'));
+    
+
     }
 
     // Muestra el formulario para crear una nueva venta

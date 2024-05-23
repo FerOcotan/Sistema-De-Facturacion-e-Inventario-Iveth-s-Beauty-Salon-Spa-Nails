@@ -4,14 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Models\Compra;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompraController extends Controller
 {
     // Muestra una lista de ventas
     public function index()
-    {
+    {   
+        /*
         $compra = Compra::all();
         return view('compra.index', compact('compra'));
+        */
+
+        $query = DB::table('compra')
+            ->join('proveedor', 'compra.id_proveedor', '=', 'proveedor.id_proveedor')
+            ->join('empleado', 'compra.id_empleado', '=', 'empleado.id_empleado')
+            ->join('producto', 'compra.id_producto', '=', 'producto.id_producto')
+            ->select(
+                'compra.id_compra as id_compra',
+                'proveedor.nombre_proveedor as id_proveedor',
+                'empleado.nombre_empleado as id_empleado',
+                'producto.nombre_producto as id_producto',
+                'compra.cantidad_compra as cantidad_compra',
+                'compra.total_compra as total_compra',
+                'compra.fecha_hora_compra as fecha_hora_compra'
+            );
+        $compras = $query->get();
+        return view('compra.index', compact('compras'));
+
     }
 
     // Muestra el formulario para crear una nueva venta

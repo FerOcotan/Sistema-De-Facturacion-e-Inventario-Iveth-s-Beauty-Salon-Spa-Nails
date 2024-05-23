@@ -5,7 +5,7 @@
 
 
 <div class="container">
-    <h1>Producto</h1>
+    <h1>Compra</h1>
     <a href="{{ route('compra.create') }}" class="btn btn-primary">Crear Compra</a>
     <table class="table">
         <thead>
@@ -20,7 +20,7 @@
                 <th class="text-center">Acciones</th>
         </thead>
         <tbody>
-            @foreach ($compra as $compra)
+            @foreach ($compras as $compra)
                 <tr>
                     <td>{{ $compra->id_compra  }}</td>
                     <td>{{ $compra->id_proveedor }}</td>
