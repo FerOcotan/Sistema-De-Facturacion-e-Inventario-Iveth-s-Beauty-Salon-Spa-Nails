@@ -18,6 +18,7 @@ class Servicio extends Model
         'id_estado',
         'nombre_servicio',
         'descripcion_servicio',
-        'precio_servicio'
+        'precio_servicio',
+        'img_servicio'
     ];
 }

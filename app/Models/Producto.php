@@ -14,6 +14,7 @@ class Producto extends Model
         'nombre_producto' => 'required',
         'precio_producto' => 'required',
         'existencias' => 'requires',
+
     ];
 
     protected $table='producto';
@@ -28,6 +29,7 @@ class Producto extends Model
         'id_estado',
         'nombre_producto',
         'precio_producto',
-        'existencias'
+        'existencias',
+        'img_producto'
     ];
 }

@@ -13,17 +13,7 @@ class ServicioController2 extends Controller
     public function index()
     {
 
-        /*
-        $servicio = Servicio::all();
-        return view('servicio.index', compact('servicio'));
-        */
 
-        /*
-        $servicio = Servicio::paginate();
-
-        return view('servicio.index', compact('servicio'))
-            ->with('i', (request()->input('page', 1) - 1) * $servicio->perPage());
-        */
 
         $query = DB::table('servicio')
             ->join('estado', 'servicio.id_estado', '=', 'estado.id_estado')
@@ -33,6 +23,8 @@ class ServicioController2 extends Controller
                 'servicio.nombre_servicio as nombre_servicio',
                 'servicio.descripcion_servicio as descripcion_servicio',
                 'servicio.precio_servicio as precio_servicio',
+                'servicio.img_servicio'
+                
             );
 
             $servicios = $query->get();
@@ -66,7 +58,7 @@ class ServicioController2 extends Controller
             $servicio->nombre_servicio = $request->nombre_servicio;
             $servicio->descripcion_servicio = $request->descripcion_servicio;
             $servicio->precio_servicio = $request->precio_servicio;
-
+            $servicio->img_servicio = $request->img_servicio;
 
             if ($servicio->save()) 
             {
@@ -107,6 +99,7 @@ class ServicioController2 extends Controller
             'nombre_servicio' => 'required',
             'descripcion_servicio' => 'required',
             'precio_servicio' => 'required|numeric',
+            'img_servicio' => 'required',
         ]);
     
         $servicio = Servicio::findOrFail($id);

@@ -71,6 +71,10 @@
                                 <label for="existencias" class="form-label">Existencias</label>
                                 <input type="text" class="form-control" id="existencias" name="existencias" placeholder="Existencias" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="img_producto" class="form-label">Imagen producto</label>
+                                <input type="text" class="form-control" id="img_producto" name="img_producto" placeholder="Pega el link de la imagen" required>
+                            </div>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </form>
                     </div>
@@ -188,6 +192,10 @@
                                             <label for="existencias" class="form-label">Existencias</label>
                                             <input type="text" class="form-control" id="existencias" name="existencias" value="{{ $producto->existencias }}" required readonly>
                                         </div>
+                                        <div class="mb-3">
+                                <label for="img_producto" class="form-label">Imagen producto</label>
+                                <input type="text" class="form-control" id="img_producto" name="img_producto" value="{{ $producto->img_producto }}" required>
+                            </div>
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                     </form>
                                 </div>
