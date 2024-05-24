@@ -71,7 +71,7 @@
                             <span style="font-size: 1.5vw">Categorías</span>
                             <hr>
                             <select class="form-control" name="idCatCombo" id="idCatCombo" onchange="selecCat()" style="font-size: 1.2vw">
-                                <option selected style="font-size: 1vw; color: black;">Seleccione...</option>
+                                
                                 @foreach ($categorias as $item)
                                 <option value="{{ $item->id_categoria }}" style="font-size: 1vw; color: black;" >{{ $item->nombre_categoria }}</option>
                                 @endforeach

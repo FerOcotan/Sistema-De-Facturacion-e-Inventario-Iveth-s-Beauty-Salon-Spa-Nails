@@ -387,7 +387,7 @@
 .combo-style {
     -webkit-appearance: none;
     -moz-appearance: none;
-    height: 50px;
+    height: 51px;
     appearance: none;
     background-color: #ffffff;
     background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray"><path d="M1.5 4.5L8 11l6.5-6.5z"/></svg>');
@@ -398,9 +398,9 @@
 
 .combo-style {
     width: 100%;
-    height: 3vw;
-    font-size: 1.2vw;
-    border-color: #AD48DC;
+    height: 3.7vw;
+  
+    border-color: #a027be;
     border-style: solid;
     border-radius: 0.8vw;
     border-width: 0.2vw;
@@ -436,9 +436,6 @@
     transition: background-color 0.3s ease;
 }
 
-.btn-style:hover {
-    background-color: #922bbf;
-}
 
 #filterModal .modal-body select {
     color: #000 !important;
@@ -450,4 +447,20 @@
 
 #filterModal {
     color: #000 !important;
+}
+
+.modal-footer .btn-primary{
+    background-color: #8238a5 !important;
+    
+}
+
+.modal-footer .btn-secondary{
+    background-color: #280438 !important;
+}
+
+/* Estilos para el combo box cuando pasa el cursor encima */
+select.form-control:hover {
+    border-color: #AD48DC !important; /* Cambia el color del borde cuando el cursor está encima */
+    background-color: #f8f9fa !important; /* Cambia el color de fondo cuando el cursor está encima */
+    color: #000 !important; /* Cambia el color del texto cuando el cursor está encima */
 }

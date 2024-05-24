@@ -88,6 +88,7 @@
          </div>
             <input type="text" value="{{ $cliente->first()->email_cliente }}" class="text-style" readonly>
         </div>
+        <hr>
         <div>
         <div>      
         <p class="card-text card-price text-center">Servicio a realizar</p>
@@ -112,7 +113,7 @@
                 <option value="Efectivo">Efectivo</option>
             </select>
         </div>
-        
+        <hr>
         <div>      
         <p class="card-text card-price text-center">Fecha y Hora de la cita:</p>
          </div>
