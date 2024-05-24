@@ -1,15 +1,14 @@
 @include('includes.sidebar')
 @include('includes.bostrapcrud')
 
+
 <main>
 
 
 <div class="container">
-    <h1>Compra</h1>
+    <h1 class="text-center">Compra</h1>
     
-      <!-- Button to trigger the modal for creating a new product -->
-      <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearProductoModal">Agregar nueva compra
-        </button>
+
 
            <!-- Formulario de ordenación -->
            <form method="GET" action="{{ route('compra.index') }}" class="mb-3">
@@ -28,13 +27,16 @@
             <button type="submit" class="btn btn-secondary">Ordenar</button>
         </form>
 
+              <!-- Button to trigger the modal for creating a new product -->
+      <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearProductoModal">Agregar nueva compra
+        </button>
 
          <!-- Modal for creating a new product -->
          <div class="modal fade" id="crearProductoModal" tabindex="-1" aria-labelledby="crearProductoModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="crearProductoModalLabel">Crear Nuevo Producto</h5>
+                        <h5 class="modal-title" id="crearProductoModalLabel">Crear nueva compra</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -130,7 +132,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="detalleProductoModalLabel{{ $compra->id_compra }}">Detalle del Producto</h5>
+                                    <h5 class="modal-title" id="detalleProductoModalLabel{{ $compra->id_compra }}">Detalle de la compra</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -157,7 +159,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="editarProductoModalLabel{{  $compra->id_compra }}">Editar Producto</h5>
+                                    <h5 class="modal-title" id="editarProductoModalLabel{{  $compra->id_compra }}">Editar compra</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -169,7 +171,7 @@
         <div class="mb-3">
          <label for="id_categoria" class="form-label">Provedores</label>
          <select class="form-control" id="id_proveedor" name="id_proveedor" required>
-          <option value="">Seleccione el estado</option>
+          <option value="">Seleccione el proveedor</option>
           @foreach ($proveedor as $id_proveedor => $nombre_proveedor)
            <option value="{{ $id_proveedor }}">{{ $nombre_proveedor }}</option>
               @endforeach
@@ -203,7 +205,7 @@
         </div>
         <div class="mb-3">
             <label for="fecha_hora_compra" class="form-label">Fecha</label>
-            <input type="text" name="fecha_hora_compra" id="fecha_hora_compra" class="form-control" value="{{ $compra->fecha_hora_compra }}" required>
+            <input type="date" name="fecha_hora_compra" id="fecha_hora_compra" class="form-control" value="{{ $compra->fecha_hora_compra }}" required>
         </div>
        
         <button type="submit" class="btn btn-primary">Actualizar</button>

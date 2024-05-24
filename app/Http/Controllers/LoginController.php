@@ -8,8 +8,8 @@ use App\Providers\AppServiceProvider;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\EmpleadosController; // Importa el controlador EmpleadosController
-
+use App\Http\Controllers\EmpleadosController; 
+use App\Http\Controllers\AboutController;   
 use function PHPUnit\Framework\isEmpty;
 use function PHPUnit\Framework\isNull;
 
@@ -43,7 +43,7 @@ class LoginController extends Controller
             {
                 $request->session()->put('correo', $request->correo);
                 $request->session()->put('tipo_usuario', 'empleado');
-                return redirect()->action([EmpleadosController::class, 'empleado']);
+                return redirect()->action([AboutController::class, 'index']);
             }
             else
             {

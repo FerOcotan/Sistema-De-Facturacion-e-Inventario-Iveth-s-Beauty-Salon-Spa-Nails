@@ -5,7 +5,7 @@
 
 
 <div class="container">
-    <h1>Cliente</h1>
+    <h1 class="text-center">Cliente</h1>
 
 
          <!-- Button to trigger the modal for creating a new product -->
@@ -144,7 +144,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>¿Estás seguro de que deseas eliminar este producto?</p>
+                                    <p>¿Estás seguro de que deseas eliminar este cliente?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

@@ -384,6 +384,19 @@ main.min-main{
     display: none;
 }
 
+.modal-content button{
+    background-color: var(--color-barra-lateral) !important;
+}
+
+.btn-primary select{
+    background-color: var(--color-barra-lateral) !important;
+}
+
+
+.btn-primary.focus, .btn-primary:focus{
+    background-color: var(--color-barra-lateral) !important;
+    border-color: var(--color-barra-lateral) !important ;
+}
 
 
 

@@ -23,6 +23,7 @@
             <label for="existencias" class="form-label">Existencias</label>
             <input type="text" name="existencias" id="existencias" class="form-control" value="{{ $producto->existencias }}" required>
         </div>
+        
        
         <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>

@@ -10,6 +10,7 @@ class ReservacionController2 extends Controller
 {
     public function index(Request $request)
     {
+        $orderBy = $request->get('orderBy', 'id_reservacion'); // Ordenar por ID Producto por defecto
         $query = DB::table('reservacion')
             ->join('cliente', 'reservacion.id_cliente', '=', 'cliente.id_cliente')
             ->join('servicio', 'reservacion.id_servicio', '=', 'servicio.id_servicio')
@@ -23,7 +24,8 @@ class ReservacionController2 extends Controller
                 'estado.nombre_estado as estado',
                 'reservacion.metodo_pago_reservacion',
                 'reservacion.fecha_hora_reservacion'
-            );
+            )
+            ->orderBy($orderBy); 
 
         if ($request->has('fecha') && $request->input('fecha') !== null) {
             $query->whereDate('reservacion.fecha_hora_reservacion', $request->input('fecha'));

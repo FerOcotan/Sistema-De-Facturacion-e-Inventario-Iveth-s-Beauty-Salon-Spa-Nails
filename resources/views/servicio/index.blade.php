@@ -3,7 +3,7 @@
 
 <main>
     <div class="container">
-        <h1>Servicios</h1>
+        <h1 class="text-center" >Servicios</h1>
 
         <!-- Button to trigger the modal for creating a new service -->
         <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearServicioModal">
@@ -43,6 +43,10 @@
                                         <option value="{{ $id_estado }}">{{ $nombre_estado }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="img_servicio" class="form-label">Imagen del servicio</label>
+                                <input type="text" step="0.01" class="form-control" id="img_servicio" name="img_servicio" placeholder="ingrese link de la imagen" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </form>
@@ -148,6 +152,10 @@
                                         <option value="{{ $id_estado }}">{{ $nombre_estado }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="img_servicio" class="form-label">Imagen del servicio</label>
+                                <input type="text" step="0.01" class="form-control" id="img_servicio" name="img_servicio" value="{{ $servicio->img_servicio }}"  required>
                             </div>
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                     </form>

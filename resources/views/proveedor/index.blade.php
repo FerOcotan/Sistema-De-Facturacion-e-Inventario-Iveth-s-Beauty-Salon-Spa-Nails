@@ -3,7 +3,7 @@
 
 <main>
     <div class="container">
-        <h1>Proveedores</h1>
+        <h1 class="text-center">Proveedores</h1>
 
         <!-- Button to trigger the modal for creating a new supplier -->
         <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearProveedorModal">

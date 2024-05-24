@@ -9,42 +9,30 @@ use Illuminate\Support\Facades\DB;
 
 class ProductoController2 extends Controller
 {
-    public function index(Request $request)
+     public function index(Request $request)
     {
-
-        /*
-        $producto = Producto::all();
-        return view('producto.index', compact('producto'));
-        */
         $orderBy = $request->get('orderBy', 'id_producto'); // Ordenar por ID Producto por defecto
 
-
-        $query = DB::table('producto')
-            ->join('categoria', 'producto.id_categoria', '=', 'categoria.id_categoria')
+        $productos = Producto::join('categoria', 'producto.id_categoria', '=', 'categoria.id_categoria')
             ->join('estado', 'producto.id_estado', '=', 'estado.id_estado')
             ->select(
-                'producto.id_producto as id_producto',
+                'producto.id_producto',
                 'categoria.nombre_categoria as id_categoria',
                 'estado.nombre_estado as id_estado',
-                'producto.nombre_producto as nombre_producto',
-                'producto.precio_producto as precio_producto',
-                'producto.existencias as existencias',
+                'producto.nombre_producto',
+                'producto.precio_producto',
+                'producto.existencias',
+                'producto.img_producto'
             )
-
-            ->orderBy($orderBy); 
-
-
-        $orderBy = $request->get('orderBy', 'id_producto'); // Ordenar por ID Producto por defecto
-
-        $categoria = DB::table('categoria')->select('id_categoria', 'nombre_categoria')->get();
-        $estado = DB::table('estado')->pluck('nombre_estado', 'id_estado');
-      
-     
-        $productos = $query->get();
-
-        return view('producto.index', compact('productos','categoria','estado'));
+            ->orderBy($orderBy)
+            ->get();
+            $categoria = DB::table('categoria')->select('id_categoria', 'nombre_categoria')->get();
+            $estado = DB::table('estado')->pluck('nombre_estado', 'id_estado');
+          
+         
+         
     
-
+            return view('producto.index', compact('productos','categoria','estado'));
     }
 
     // Muestra el formulario para crear una nueva venta
@@ -68,6 +56,7 @@ class ProductoController2 extends Controller
             $producto->nombre_producto = $request->nombre_producto;
             $producto->precio_producto = $request->precio_producto;
             $producto->existencias = $request->existencias;
+            $producto->img_producto = $request->img_producto;
 
 
             if ($producto->save()) 
@@ -94,12 +83,12 @@ class ProductoController2 extends Controller
         return view('producto.show', compact('producto'));
     }
 
-    // Muestra el formulario para editar una venta existente
     public function edit($id)
-    {
-        $producto = Producto::findOrFail($id);
-        return view('producto.edit', compact('producto'));
-    }
+{
+    $producto = Producto::select('id_producto', 'id_categoria', 'id_estado', 'nombre_producto', 'precio_producto', 'existencias', 'img_producto')->findOrFail($id);
+    return view('producto.edit', compact('producto'));
+}
+
 
     // Actualiza una venta existente en la base de datos
     public function update(Request $request, $id)
@@ -110,6 +99,7 @@ class ProductoController2 extends Controller
             'nombre_producto' => 'required',
             'precio_producto' => 'required|numeric',
             'existencias' => 'required',
+            'img_producto'=> 'required',
         ]);
     
         $producto = Producto::findOrFail($id);

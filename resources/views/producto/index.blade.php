@@ -3,12 +3,9 @@
 
 <main>
     <div class="container">
-        <h1>Producto</h1>
+        <h1 class="text-center">Producto</h1>
         
-        <!-- Button to trigger the modal for creating a new product -->
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearProductoModal">
-            Agregar Producto
-        </button>
+    
         
           <!-- Formulario de ordenación -->
           <form method="GET" action="{{ route('productoempleado.index') }}" class="mb-3">
@@ -25,6 +22,10 @@
             </div>
             <button type="submit" class="btn btn-secondary">Ordenar</button>
         </form>
+            <!-- Button to trigger the modal for creating a new product -->
+            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearProductoModal">
+            Agregar Producto
+        </button>
 
         <!-- Modal for creating a new product -->
         <div class="modal fade" id="crearProductoModal" tabindex="-1" aria-labelledby="crearProductoModalLabel" aria-hidden="true">
@@ -69,6 +70,10 @@
                             <div class="mb-3">
                                 <label for="existencias" class="form-label">Existencias</label>
                                 <input type="text" class="form-control" id="existencias" name="existencias" placeholder="Existencias" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="img_producto" class="form-label">Imagen producto</label>
+                                <input type="text" class="form-control" id="img_producto" name="img_producto" placeholder="Pega el link de la imagen" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </form>
@@ -187,6 +192,10 @@
                                             <label for="existencias" class="form-label">Existencias</label>
                                             <input type="text" class="form-control" id="existencias" name="existencias" value="{{ $producto->existencias }}" required readonly>
                                         </div>
+                                        <div class="mb-3">
+                                <label for="img_producto" class="form-label">Imagen producto</label>
+                                <input type="text" class="form-control" id="img_producto" name="img_producto" value="{{ $producto->img_producto }}" required>
+                            </div>
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                     </form>
                                 </div>
