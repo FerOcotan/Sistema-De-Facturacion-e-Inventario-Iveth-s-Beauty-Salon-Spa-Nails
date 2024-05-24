@@ -9,7 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script>
+        // Aplica el modo oscuro antes de que el navegador pinte la página
+        if (localStorage.getItem("modoOscuro") === "true") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
 </head>
+
 <body>
 
 

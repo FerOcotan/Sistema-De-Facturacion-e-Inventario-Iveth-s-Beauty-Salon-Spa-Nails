@@ -1,7 +1,7 @@
 
 <div class="container">
     <h1>Crear Servicio</h1>
-    <form action="{{ route('servicio.store') }}" method="POST">
+    <form action="{{ route('servicioempleado.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="id_estado" class="form-label">Estado</label>

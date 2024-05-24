@@ -4,14 +4,47 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ProductoController2 extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
+        /*
         $producto = Producto::all();
         return view('producto.index', compact('producto'));
+        */
+        $orderBy = $request->get('orderBy', 'id_producto'); // Ordenar por ID Producto por defecto
+
+
+        $query = DB::table('producto')
+            ->join('categoria', 'producto.id_categoria', '=', 'categoria.id_categoria')
+            ->join('estado', 'producto.id_estado', '=', 'estado.id_estado')
+            ->select(
+                'producto.id_producto as id_producto',
+                'categoria.nombre_categoria as id_categoria',
+                'estado.nombre_estado as id_estado',
+                'producto.nombre_producto as nombre_producto',
+                'producto.precio_producto as precio_producto',
+                'producto.existencias as existencias',
+            )
+
+            ->orderBy($orderBy); 
+
+
+        $orderBy = $request->get('orderBy', 'id_producto'); // Ordenar por ID Producto por defecto
+
+        $categoria = DB::table('categoria')->select('id_categoria', 'nombre_categoria')->get();
+        $estado = DB::table('estado')->pluck('nombre_estado', 'id_estado');
+      
+     
+        $productos = $query->get();
+
+        return view('producto.index', compact('productos','categoria','estado'));
+    
+
     }
 
     // Muestra el formulario para crear una nueva venta
@@ -39,18 +72,18 @@ class ProductoController2 extends Controller
 
             if ($producto->save()) 
             {
-                return redirect()->route('producto.index')->with('success', 'Registro exitoso.');
+                return redirect()->route('productoempleado.index')->with('success', 'Registro exitoso.');
             } 
             else 
             {
                 
-                return redirect()->route('producto.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
+                return redirect()->route('productoempleado.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
             }
         } 
         catch (\Exception $e) 
         {
                 
-            return redirect()->route('producto.create')->with('error', 'Hubo un problema al procesar el registro: ' . $e->getMessage());
+            return redirect()->route('productoempleado.create')->with('error', 'Hubo un problema al procesar el registro: ' . $e->getMessage());
         }     
     }
 
@@ -82,7 +115,7 @@ class ProductoController2 extends Controller
         $producto = Producto::findOrFail($id);
         $producto->update($validatedData);
     
-        return redirect()->route('producto.index')
+        return redirect()->route('productoempleado.index')
             ->with('success', 'Producto actualizada con éxito');
     }
 
@@ -93,6 +126,6 @@ class ProductoController2 extends Controller
         $producto = Producto::findOrFail($id);
         $producto->delete();
 
-        return redirect()->route('producto.index')->with('success', 'Producto eliminada con éxito');
+        return redirect()->route('productoempleado.index')->with('success', 'Producto eliminada con éxito');
     }
 }

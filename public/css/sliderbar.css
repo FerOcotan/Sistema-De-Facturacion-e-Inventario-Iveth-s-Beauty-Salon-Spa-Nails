@@ -11,8 +11,8 @@
     --color-menu-hover:rgb(238,238,238);
     --color-menu-hover-texto:rgb(0,0,0);
 
-    --color-boton:rgb(255, 255, 255);
-    --color-boton-texto:#9614D3;
+    --color-boton:rgba(0, 0, 0, 0.473);
+    --color-boton-texto:#ffffff;
 
     --color-linea:rgb(255, 255, 255);
 
@@ -372,6 +372,17 @@ main.min-main{
 
 
 
+.barra-lateral {
+    transition: width 0.3s;
+}
+
+.min-main {
+    transition: margin-left 0.3s;
+}
+
+.oculto {
+    display: none;
+}
 
 
 

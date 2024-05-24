@@ -4,15 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\Venta;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class VentaController extends Controller
 {
     // Muestra una lista de ventas
+
     public function index()
     {
-        $venta = Venta::all();
-        return view('venta.index', compact('venta'));
+        $query = DB::table('venta')
+            ->join('cliente', 'venta.id_cliente', '=', 'cliente.id_cliente')
+            ->join('empleado', 'venta.id_empleado', '=', 'empleado.id_empleado')
+            ->select(
+                'venta.id_venta as id_venta',
+                'cliente.nombre_cliente as id_cliente',
+                'empleado.nombre_empleado as id_empleado',
+                'venta.metodo_pago_venta as metodo_pago_venta',
+                'venta.fecha_hora_venta as fecha_hora_venta',
+                'venta.total_venta as total_venta'
+            );
+           
+            $clientes = DB::table('cliente')->get();
+            $ventas = $query->get();
+            $empleados = DB::table('empleado')->pluck('nombre_empleado', 'id_empleado');
+            $metodosPagos = ['Efectivo', 'Tarjeta', 'Transferencia'];
+    
+            return view('venta.index', compact('ventas', 'empleados', 'metodosPagos'));
     }
+    
 
     // Muestra el formulario para crear una nueva venta
     public function create()
@@ -62,18 +80,22 @@ class VentaController extends Controller
     public function edit($id)
     {
         $venta = Venta::findOrFail($id);
-        return view('venta.edit', compact('venta'));
+        $ventas = $query->get();
+        $empleados = DB::table('empleado')->pluck('nombre_empleado', 'id_empleado');
+        $metodosPagos = ['Efectivo', 'Tarjeta', 'Transferencia'];
+
+        return view('venta.edit', compact('venta', 'empleados', 'metodosPagos'));
     }
 
     // Actualiza una venta existente en la base de datos
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'id_cliente' => 'required',
+            //'id_cliente' => 'required',
             'id_empleado' => 'required',
             'metodo_pago_venta' => 'required',
             'fecha_hora_venta' => 'required|date',
-            'total_venta' => 'required|numeric',
+            //'total_venta' => 'required|numeric',
         ]);
     
         $venta = Venta::findOrFail($id);

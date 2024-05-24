@@ -1,63 +1,14 @@
 @include('includes.sidebar')
-
-<head>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-</head>
+@include('includes.bostrapcrud')
 
 
 <main>
     <div class="container">
-        <h1>Facturas</h1>
+        <h1 class="text-center">Facturas</h1>
         <!-- Botón para abrir el modal de creación -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearVentaModal">
-            Crear Factura
-        </button>
+        <a href="{{ route('empleado') }}" class="btn btn-primary">Nueva factura</a>
         
-        <!-- Modal de creación -->
-        <div class="modal fade" id="crearVentaModal" tabindex="-1" aria-labelledby="crearVentaModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="crearVentaModalLabel">Crear Factura</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{ route('venta.store') }}" method="POST">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="id_cliente" class="form-label">Cliente</label>
-                                <input type="text" class="form-control" id="id_cliente" name="id_cliente" placeholder="Cliente" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="id_empleado" class="form-label">Empleado</label>
-                                <input type="text" class="form-control" id="id_empleado" name="id_empleado" placeholder="Empleado" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="metodo_pago_venta" class="form-label">Metodo Pago</label>
-                                <input type="text" class="form-control" id="metodo_pago_venta" name="metodo_pago_venta" placeholder="Metodo pago" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="fecha_hora_venta" class="form-label">Fecha</label>
-                                <input type="text" class="form-control" id="fecha_hora_venta" name="fecha_hora_venta" placeholder="Fecha" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="total_venta" class="form-label">Total</label>
-                                <input type="text" class="form-control" id="total_venta" name="total_venta" placeholder="Total" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+       
         <table class="table">
             <thead>
                 <tr>
@@ -67,11 +18,12 @@
                     <th>Método de Pago</th>
                     <th>Fecha</th>
                     <th>Total</th>
-                    <th>Acciones</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($venta as $venta)
+            @foreach ($ventas as $venta)
+
                     <tr>
                         <td>{{ $venta->id_venta }}</td>
                         <td>{{ $venta->id_cliente }}</td>
@@ -83,7 +35,7 @@
 
                         <!-- Botón para abrir el modal de detalles -->
                      <!-- Botón de descarga de PDF -->
-                    <button type="button"  class="btn btn-danger">
+                    <button type="button"  class="btn btn-pdf">
                         <i class="bi bi-file-pdf"></i> 
                     </button>
 
@@ -101,46 +53,63 @@
                         </td>
                     </tr>
 
-                     <!-- Modal de edición -->
-    <div class="modal fade" id="editarVentaModal{{ $venta->id_venta }}" tabindex="-1" aria-labelledby="editarVentaModalLabel{{ $venta->id_venta }}" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editarVentaModalLabel{{ $venta->id_venta }}">Editar Factura</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('venta.update', $venta->id_venta) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="mb-3">
-                            <label for="id_cliente" class="form-label">Cliente</label>
-                            <input type="text" class="form-control" id="id_cliente" name="id_cliente" value="{{ $venta->id_cliente }}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_empleado" class="form-label">Empleado</label>
-                            <input type="text" class="form-control" id="id_empleado" name="id_empleado" value="{{ $venta->id_empleado }}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="metodo_pago_venta" class="form-label">Metodo Pago</label>
-                            <input type="text" class="form-control" id="metodo_pago_venta" name="metodo_pago_venta" value="{{ $venta->metodo_pago_venta }}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="fecha_hora_venta" class="form-label">Fecha</label>
-                            <input type="text" class="form-control" id="fecha_hora_venta" name="fecha_hora_venta" value="{{ $venta->fecha_hora_venta }}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="total_venta" class="form-label">Total</label>
-                            <input type="text" class="form-control" id="total_venta" name="total_venta" value="{{ $venta->total_venta }}" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </form>
-                </div>
+                    <!-- Modal de edición -->
+<div class="modal fade" id="editarVentaModal{{ $venta->id_venta }}" tabindex="-1" aria-labelledby="editarVentaModalLabel{{ $venta->id_venta }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarVentaModalLabel{{ $venta->id_venta }}">Editar Factura</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('venta.update', $venta->id_venta) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="mb-3">
+                        <label for="id_cliente" class="form-label">Cliente</label>
+                        <input type="text" class="form-control" id="id_cliente" name="id_cliente" value="{{ $venta->id_cliente }}" required readonly>
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="id_empleado" class="form-label">Empleado</label>
+                        <select class="form-control" id="id_empleado" name="id_empleado" required>
+                            <option value="">Selecciona un empleado</option>
+                            @foreach ($empleados as $id_empleado => $nombre_empleado)
+                                <option value="{{ $id_empleado }}" {{ $venta->id_empleado == $id_empleado ? 'selected' : '' }}>
+                                    {{ $nombre_empleado }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="metodo_pago_venta" class="form-label">Método de Pago</label>
+                        <select class="form-control" id="metodo_pago_venta" name="metodo_pago_venta" required>
+                            @foreach ($metodosPagos as $metodoPago)
+                                <option value="{{ $metodoPago }}" {{ $venta->metodo_pago_venta == $metodoPago ? 'selected' : '' }}>
+                                    {{ $metodoPago }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fecha_hora_venta" class="form-label">Fecha</label>
+                        <input type="datetime-local" class="form-control" id="fecha_hora_venta" name="fecha_hora_venta" value="{{ \Carbon\Carbon::parse($venta->fecha_hora_venta)->format('Y-m-d\TH:i') }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="total_venta" class="form-label">Total</label>
+                        <input type="number" step="0.01" class="form-control" id="total_venta" name="total_venta" value="{{ $venta->total_venta }}" required readonly>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
     <!-- Modal de confirmación de eliminación -->
     <div class="modal fade" id="eliminarVentaModal{{ $venta->id_venta }}" tabindex="-1" aria-labelledby="eliminarVentaModalLabel{{ $venta->id_venta }}" aria-hidden="true">

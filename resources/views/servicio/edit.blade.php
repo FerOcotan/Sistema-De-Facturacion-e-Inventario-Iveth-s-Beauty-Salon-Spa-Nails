@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Editar Servicio</h1>
-    <form action="{{ route('servicio.update', $servicio->id_servicio) }}" method="POST">
+    <form action="{{ route('servicioempleado.update', $servicio->id_servicio) }}" method="POST">
         @csrf
         @method('PATCH')
         <div class="mb-3">

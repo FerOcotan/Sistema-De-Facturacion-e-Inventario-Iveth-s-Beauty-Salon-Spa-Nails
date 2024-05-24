@@ -8,10 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Compra extends Model
 {
     use HasFactory;
+    static $rules = [
+        'id_proveedor' =>'required',
+        'id_empleado' =>'required',
+        'id_producto' =>'required',
+        'cantidad_compra' =>'required',
+        'total_compra' =>'required',
+        'fecha_hora_compra' =>'required',
+    ];
 
     protected $table='compra';
-
     protected $primaryKey='id_compra';
+    protected $perPage = 20;
 
     public $timestamps=false;
 

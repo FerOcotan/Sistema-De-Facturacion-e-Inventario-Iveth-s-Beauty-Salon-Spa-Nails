@@ -3,23 +3,55 @@
 namespace App\Http\Controllers;
 
 use App\Models\Servicio;
+//use App\Models\Estado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ServicioController2 extends Controller
 {
     public function index()
     {
 
+        /*
         $servicio = Servicio::all();
         return view('servicio.index', compact('servicio'));
+        */
+
+        /*
+        $servicio = Servicio::paginate();
+
+        return view('servicio.index', compact('servicio'))
+            ->with('i', (request()->input('page', 1) - 1) * $servicio->perPage());
+        */
+
+        $query = DB::table('servicio')
+            ->join('estado', 'servicio.id_estado', '=', 'estado.id_estado')
+            ->select(
+                'servicio.id_servicio as id_servicio',
+                'estado.nombre_estado as id_estado',
+                'servicio.nombre_servicio as nombre_servicio',
+                'servicio.descripcion_servicio as descripcion_servicio',
+                'servicio.precio_servicio as precio_servicio',
+            );
+
+            $servicios = $query->get();
+            $estado = DB::table('estado')->pluck('nombre_estado', 'id_estado');
+
+        return view('servicio.index', compact('servicios','estado'));
+
+
+     
     }
 
     // Muestra el formulario para crear una nueva venta
     public function create()
     {
-  
+        /*
         $servicio = new Servicio();
         return view('servicio.create', compact('servicio'));
+        */
+
     }
 
     // Almacena una nueva venta en la base de datos
@@ -38,18 +70,18 @@ class ServicioController2 extends Controller
 
             if ($servicio->save()) 
             {
-                return redirect()->route('servicio.index')->with('success', 'Registro exitoso.');
+                return redirect()->route('servicioempleado.index')->with('success', 'Registro exitoso.');
             } 
             else 
             {
                 
-                return redirect()->route('servicio.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
+                return redirect()->route('servicioempleado.create')->with('error', 'Hubo un problema al guardar el registro. Intente nuevamente.');
             }
         } 
         catch (\Exception $e) 
         {
                 
-            return redirect()->route('servicio.create')->with('error', 'Hubo un problema al procesar el registro: ' . $e->getMessage());
+            return redirect()->route('servicioempleado.create')->with('error', 'Hubo un problema al procesar el registro: ' . $e->getMessage());
         }     
     }
 
@@ -80,7 +112,7 @@ class ServicioController2 extends Controller
         $servicio = Servicio::findOrFail($id);
         $servicio->update($validatedData);
     
-        return redirect()->route('servicio.index')
+        return redirect()->route('servicioempleado.index')
             ->with('success', 'Servicio actualizada con éxito');
     }
 
@@ -91,6 +123,6 @@ class ServicioController2 extends Controller
         $servicio = Servicio::findOrFail($id);
         $servicio->delete();
 
-        return redirect()->route('servicio.index')->with('success', 'Servicio eliminada con éxito');
+        return redirect()->route('servicioempleado.index')->with('success', 'Servicio eliminada con éxito');
     }
 }

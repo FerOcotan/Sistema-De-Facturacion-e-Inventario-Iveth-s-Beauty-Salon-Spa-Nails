@@ -1,0 +1,93 @@
+:root {
+    --primary-color: #127aa6cc;
+    --primary-color-hover: #127aa69e;
+    --danger-color: #c90b04;
+    --info-color: #127aa6cc;
+    --info-color-hover: #33034acc;
+    --warning-color: #ffffffea;
+    --header-bg-color: #9614D3;
+    --header-text-color: white;
+    --even-row-bg-color: #f2f2f2;
+    --hover-row-bg-color: #ddd;
+    --color-text:black;
+    --pdf-boton:#c90b04;
+    
+}
+.dark-mode{
+    --primary-color: #000000cc;
+    --primary-color-hover: #000000cc;
+    --danger-color: #000000cc;
+    --info-color: #000000cc;
+    --info-color-hover: #000000cc;
+    --warning-color: #000000cc;
+    --header-bg-color: #000000cc;
+    --header-text-color: white;
+    --even-row-bg-color: white;
+    --hover-row-bg-color: rgba(0, 0, 0, 0.279);
+    --color-text:white;
+    --pdf-boton:transparent;
+}
+
+
+/* Estilos personalizados para la tabla */
+.table thead {
+    background-color: var(--header-bg-color); /* Cambia el color de fondo del encabezado */
+    color: var(--header-text-color); /* Cambia el color del texto del encabezado */
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: var(--even-row-bg-color); /* Cambia el color de fondo de las filas pares */
+}
+
+.table tbody tr:hover {
+    background-color: var(--hover-row-bg-color); /* Cambia el color de fondo al pasar el mouse */
+}
+
+/* Estilos personalizados para los botones */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-hover);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.btn-pdf {
+    background-color: var(--pdf-boton);
+    border-color: var(--pdf-boton);
+}
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-info {
+    background-color: var(--info-color);
+    border-color: var(--info-color);
+}
+
+.btn-info:hover {
+    background-color: var(--info-color-hover);
+    border-color: var(--info-color-hover);
+    color: black;
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+    color: var(--color-text);
+}
+
+.btn-warning:hover {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+}
