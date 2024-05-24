@@ -10,6 +10,22 @@
             Agregar Producto
         </button>
         
+          <!-- Formulario de ordenación -->
+          <form method="GET" action="{{ route('productoempleado.index') }}" class="mb-3">
+            <div class="form-group">
+                <label for="orderBy">Ordenar por:</label>
+                <select name="orderBy" id="orderBy" class="form-control">
+                    <option value="id_producto">ID Producto</option>
+                    <option value="id_categoria">Categoría</option>
+                    <option value="id_estado">Estado</option>
+                    <option value="nombre_producto">Nombre</option>
+                    <option value="precio_producto">Precio</option>
+                    <option value="existencias">Existencias</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-secondary">Ordenar</button>
+        </form>
+
         <!-- Modal for creating a new product -->
         <div class="modal fade" id="crearProductoModal" tabindex="-1" aria-labelledby="crearProductoModalLabel" aria-hidden="true">
             <div class="modal-dialog">

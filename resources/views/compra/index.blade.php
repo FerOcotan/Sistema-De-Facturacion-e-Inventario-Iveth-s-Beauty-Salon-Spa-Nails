@@ -11,6 +11,23 @@
       <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearProductoModal">Agregar nueva compra
         </button>
 
+           <!-- Formulario de ordenación -->
+           <form method="GET" action="{{ route('compra.index') }}" class="mb-3">
+            <div class="form-group">
+                <label for="orderBy">Ordenar por:</label>
+                <select name="orderBy" id="orderBy" class="form-control">
+                    <option value="id_compra">ID</option>
+                    <option value="id_empleado">Empleado</option>
+                   
+                    <option value="total_compra">Total</option>
+                
+                    <option value="fecha_hora_compra">Fecha</option>
+                </select>
+
+            </div>
+            <button type="submit" class="btn btn-secondary">Ordenar</button>
+        </form>
+
 
          <!-- Modal for creating a new product -->
          <div class="modal fade" id="crearProductoModal" tabindex="-1" aria-labelledby="crearProductoModalLabel" aria-hidden="true">

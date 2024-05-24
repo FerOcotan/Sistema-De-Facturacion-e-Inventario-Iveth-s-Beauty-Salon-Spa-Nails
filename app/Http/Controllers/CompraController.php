@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\DB;
 class CompraController extends Controller
 {
     // Muestra una lista de ventas
-    public function index()
+    public function index(Request $request)
     {   
         /*
         $compra = Compra::all();
         return view('compra.index', compact('compra'));
         */
-
+        $orderBy = $request->get('orderBy', 'id_compra'); // Ordenar por ID Producto por defecto
         $query = DB::table('compra')
             ->join('proveedor', 'compra.id_proveedor', '=', 'proveedor.id_proveedor')
             ->join('empleado', 'compra.id_empleado', '=', 'empleado.id_empleado')
@@ -28,7 +28,8 @@ class CompraController extends Controller
                 'compra.cantidad_compra as cantidad_compra',
                 'compra.total_compra as total_compra',
                 'compra.fecha_hora_compra as fecha_hora_compra'
-            );
+            )
+            ->orderBy($orderBy); 
 
         $proveedor = DB::table('proveedor')->pluck('nombre_proveedor', 'id_proveedor');
         $compras = $query->get();
