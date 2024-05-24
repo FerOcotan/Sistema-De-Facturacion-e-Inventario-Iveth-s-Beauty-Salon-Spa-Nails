@@ -31,15 +31,17 @@
                     <div class="modal-body">
                         <form action="{{ route('reservacionempleado.store') }}" method="POST">
                             @csrf
+                               <!-- Concat de nombre y apellido -->
                             <div class="mb-3">
-                                <label for="id_cliente" class="form-label">Cliente</label>
-                                <select class="form-control" id="id_cliente" name="id_cliente" required>
-                                    <option value="">Seleccione un Cliente</option>
-                                    @foreach ($clientes as $cliente)
-                                        <option value="{{ $cliente->id_cliente }}">{{ $cliente->nombre_cliente }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            <label for="id_cliente" class="form-label">Cliente</label>
+                            <select class="form-control" id="id_cliente" name="id_cliente" required>
+                                <option value="">Seleccione un Cliente</option>
+                                @foreach ($clientes as $cliente)
+                                    <option value="{{ $cliente->id_cliente }}">{{ $cliente->nombre_cliente }} {{ $cliente->apellido_cliente }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                             <div class="mb-3">
                                 <label for="id_servicio" class="form-label">Servicio</label>
                                 <select class="form-control" id="id_servicio" name="id_servicio" required>

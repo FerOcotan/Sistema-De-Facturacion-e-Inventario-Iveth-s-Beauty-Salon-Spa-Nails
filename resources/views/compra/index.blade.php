@@ -36,7 +36,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="crearProductoModalLabel">Crear Nuevo Producto</h5>
+                        <h5 class="modal-title" id="crearProductoModalLabel">Crear nueva compra</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -132,7 +132,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="detalleProductoModalLabel{{ $compra->id_compra }}">Detalle del Producto</h5>
+                                    <h5 class="modal-title" id="detalleProductoModalLabel{{ $compra->id_compra }}">Detalle de la compra</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -159,7 +159,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="editarProductoModalLabel{{  $compra->id_compra }}">Editar Producto</h5>
+                                    <h5 class="modal-title" id="editarProductoModalLabel{{  $compra->id_compra }}">Editar compra</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -171,7 +171,7 @@
         <div class="mb-3">
          <label for="id_categoria" class="form-label">Provedores</label>
          <select class="form-control" id="id_proveedor" name="id_proveedor" required>
-          <option value="">Seleccione el estado</option>
+          <option value="">Seleccione el proveedor</option>
           @foreach ($proveedor as $id_proveedor => $nombre_proveedor)
            <option value="{{ $id_proveedor }}">{{ $nombre_proveedor }}</option>
               @endforeach
@@ -205,7 +205,7 @@
         </div>
         <div class="mb-3">
             <label for="fecha_hora_compra" class="form-label">Fecha</label>
-            <input type="text" name="fecha_hora_compra" id="fecha_hora_compra" class="form-control" value="{{ $compra->fecha_hora_compra }}" required>
+            <input type="date" name="fecha_hora_compra" id="fecha_hora_compra" class="form-control" value="{{ $compra->fecha_hora_compra }}" required>
         </div>
        
         <button type="submit" class="btn btn-primary">Actualizar</button>
