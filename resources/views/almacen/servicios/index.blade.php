@@ -97,7 +97,7 @@
                           
                             
                         </div>
-                <img src="{{ asset('./img/Beneficios-de-cortarse-el-pelo.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ $item->img_servicio }}" class="card-img-top" alt="{{ $item->nombre_servicio }}">
                 <div class="cuerpo-tarjeta text-center">
                           
                           
@@ -110,6 +110,9 @@
     @endforeach
 </div>
 <!-- FIN TARJETAS -->
+
+
+
 
 <!-- INICIO DE LA PAGINACIÓN -->
 <div class="pagination-container">

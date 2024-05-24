@@ -122,15 +122,12 @@
             @foreach ($chunk as $item)
                 <a href="#" class="aTarjetas">
                     <div class="tarjetas">
-                    <div class="cuerpo-tarjeta2 text-center">
+                        <div class="cuerpo-tarjeta2 text-center">
                             <h5 class="card-title">{{ $item->nombre_producto }}</h5>
-                          
-                            
                         </div>
-                        <img src="./img/Beneficios-de-cortarse-el-pelo.jpg" class="card-img-top" alt="...">
+                        <!-- Usar la URL completa desde el campo img_producto -->
+                        <img src="{{ $item->img_producto }}" class="card-img-top" alt="{{ $item->nombre_producto }}">
                         <div class="cuerpo-tarjeta text-center">
-                          
-                          
                             <p class="card-text card-price">${{ $item->precio_producto }}</p>
                         </div>
                     </div>
@@ -140,6 +137,7 @@
     @endforeach
 </div>
 <!-- FIN TARJETAS -->
+
 
 
 <script>
