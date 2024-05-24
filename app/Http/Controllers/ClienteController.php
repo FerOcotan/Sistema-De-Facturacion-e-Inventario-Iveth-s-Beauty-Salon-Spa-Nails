@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
@@ -11,7 +11,8 @@ class ClienteController extends Controller
     public function index()
     {
         $cliente = Cliente::all();
-        return view('cliente.index', compact('cliente'));
+        $estados = DB::table('estado')->pluck('nombre_estado', 'id_estado');
+        return view('cliente.index', compact('cliente','estados'));
     }
 
     // Muestra el formulario para crear una nueva venta

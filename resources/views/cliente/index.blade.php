@@ -17,7 +17,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="crearProductoModalLabel">Crear Nuevo Producto</h5>
+                        <h5 class="modal-title" id="crearProductoModalLabel">Añadir Cliente</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -26,9 +26,14 @@
                     <form action="{{ route('cliente.store') }}" method="POST">
         @csrf
         <div class="mb-3">
-            <label for="id_estado" class="form-label">Estado</label>
-            <input type="text" class="form-control" id="id_estado" name="id_estado" placeholder="Estado" required>
-        </div>
+                                <label for="id_estado" class="form-label">Estado</label>
+                                <select class="form-control" id="id_estado" name="id_estado" required>
+                                    <option value="">Seleccione un Estado</option>
+                                    @foreach ($estados as $id_estado => $nombre_estado)
+                                        <option value="{{ $id_estado }}">{{ $nombre_estado }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
         <div class="mb-3">
             <label for="nombre_cliente" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" placeholder="Nombre" required>
