@@ -34,7 +34,7 @@ class ProductoController2 extends Controller
             ->orderBy($orderBy); 
 
 
-        $orderBy = $request->get('orderBy', 'id_producto'); // Ordenar por ID Producto por defecto
+       
 
         $categoria = DB::table('categoria')->select('id_categoria', 'nombre_categoria')->get();
         $estado = DB::table('estado')->pluck('nombre_estado', 'id_estado');

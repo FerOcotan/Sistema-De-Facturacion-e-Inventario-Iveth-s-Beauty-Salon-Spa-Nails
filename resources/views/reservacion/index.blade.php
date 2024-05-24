@@ -3,10 +3,10 @@
 
 <main>
     <div class="container">
-        <h1>Reservaciones</h1>
+        <h1 class="text-center" >Reservaciones</h1>
 
         <!-- Formulario de filtro por fecha -->
-        <form action="{{ route('reservacionempleado.index') }}" method="GET" class="form-inline mb-3">
+        <form action="{{ route('reservacionempleado.index') }}" method="GET" class="form-inline mb-3" >
             <div class="form-group mr-2">
                 <label for="fecha" class="mr-2">Filtrar por Fecha:</label>
                 <input type="date" class="form-control" id="fecha" name="fecha" value="{{ request('fecha') }}">

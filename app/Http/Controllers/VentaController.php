@@ -9,8 +9,10 @@ class VentaController extends Controller
 {
     // Muestra una lista de ventas
 
-    public function index()
+    public function index(Request $request)
     {
+
+        $orderBy = $request->get('orderBy', 'id_venta'); // Ordenar por ID Producto por defecto
         $query = DB::table('venta')
             ->join('cliente', 'venta.id_cliente', '=', 'cliente.id_cliente')
             ->join('empleado', 'venta.id_empleado', '=', 'empleado.id_empleado')
@@ -21,7 +23,8 @@ class VentaController extends Controller
                 'venta.metodo_pago_venta as metodo_pago_venta',
                 'venta.fecha_hora_venta as fecha_hora_venta',
                 'venta.total_venta as total_venta'
-            );
+            )
+            ->orderBy($orderBy); 
            
             $clientes = DB::table('cliente')->get();
             $ventas = $query->get();

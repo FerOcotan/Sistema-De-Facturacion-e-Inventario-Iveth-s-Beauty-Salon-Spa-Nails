@@ -3,12 +3,9 @@
 
 <main>
     <div class="container">
-        <h1>Producto</h1>
+        <h1 class="text-center">Producto</h1>
         
-        <!-- Button to trigger the modal for creating a new product -->
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearProductoModal">
-            Agregar Producto
-        </button>
+    
         
           <!-- Formulario de ordenación -->
           <form method="GET" action="{{ route('productoempleado.index') }}" class="mb-3">
@@ -25,6 +22,10 @@
             </div>
             <button type="submit" class="btn btn-secondary">Ordenar</button>
         </form>
+            <!-- Button to trigger the modal for creating a new product -->
+            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearProductoModal">
+            Agregar Producto
+        </button>
 
         <!-- Modal for creating a new product -->
         <div class="modal fade" id="crearProductoModal" tabindex="-1" aria-labelledby="crearProductoModalLabel" aria-hidden="true">

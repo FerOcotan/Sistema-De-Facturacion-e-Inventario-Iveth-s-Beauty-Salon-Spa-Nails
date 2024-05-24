@@ -1,3 +1,9 @@
+@include('includes.sidebar')
+@include('includes.bostrapcrud')
+
+
+<main>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,3 +14,4 @@
     <p>Información sobre nuestra empresa...</p>
 </body>
 </html>
+</main>

@@ -168,7 +168,8 @@
 }
 
 .cuerpo-tarjeta {
-    background-color: #9614d341;
+    background-color: linear-gradient(45deg, #9614d341, #ffffff);
+   
     padding: 0.5vw 0.5vw;
     text-align: center;
    
@@ -176,7 +177,7 @@
 
 .cuerpo-tarjeta2 {
     border-bottom: 0.3vw solid rgb(255, 255, 255);
-    background-color: #9614d341;
+    background-color: #9614d37c;
     padding: 0.5vw 0.5vw;
     text-align: center;
 }
@@ -395,6 +396,25 @@
     background-size: 1vw;
 }
 
+.combo-style {
+    width: 100%;
+    height: 3vw;
+    font-size: 1.2vw;
+    border-color: #AD48DC;
+    border-style: solid;
+    border-radius: 0.8vw;
+    border-width: 0.2vw;
+    padding-left: 0.6vw;
+    background-color: white;
+    color: black;
+}
+
+.combo-style option {
+    font-size: 1vw;
+    color: black; /* Default color */
+}
+
+
 .datetime-style {
     width: calc(50% - 1vw);
 }
@@ -420,3 +440,14 @@
     background-color: #922bbf;
 }
 
+#filterModal .modal-body select {
+    color: #000 !important;
+}
+
+#filterModal .modal-body {
+    color: #000 !important;
+}
+
+#filterModal {
+    color: #000 !important;
+}

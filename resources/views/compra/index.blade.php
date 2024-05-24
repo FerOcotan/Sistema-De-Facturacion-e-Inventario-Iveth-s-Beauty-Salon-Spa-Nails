@@ -1,15 +1,14 @@
 @include('includes.sidebar')
 @include('includes.bostrapcrud')
 
+
 <main>
 
 
 <div class="container">
-    <h1>Compra</h1>
+    <h1 class="text-center">Compra</h1>
     
-      <!-- Button to trigger the modal for creating a new product -->
-      <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearProductoModal">Agregar nueva compra
-        </button>
+
 
            <!-- Formulario de ordenación -->
            <form method="GET" action="{{ route('compra.index') }}" class="mb-3">
@@ -28,6 +27,9 @@
             <button type="submit" class="btn btn-secondary">Ordenar</button>
         </form>
 
+              <!-- Button to trigger the modal for creating a new product -->
+      <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearProductoModal">Agregar nueva compra
+        </button>
 
          <!-- Modal for creating a new product -->
          <div class="modal fade" id="crearProductoModal" tabindex="-1" aria-labelledby="crearProductoModalLabel" aria-hidden="true">

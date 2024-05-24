@@ -5,10 +5,26 @@
 <main>
     <div class="container">
         <h1 class="text-center">Facturas</h1>
-        <!-- Botón para abrir el modal de creación -->
-        <a href="{{ route('empleado') }}" class="btn btn-primary">Nueva factura</a>
+    
         
+          <!-- Formulario de ordenación -->
+          <form method="GET" action="{{ route('venta.index') }}" class="mb-3">
+            <div class="form-group">
+                <label for="orderBy">Ordenar por:</label>
+                <select name="orderBy" id="orderBy" class="form-control">
+                    <option value="id_cliente">ID</option>
+                    <option value="id_empleado">Empleado</option>
+                    <option value="fecha_hora_venta">Fecha</option>
+                    <option value="total_venta">Total</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-secondary">Ordenar</button>
+        </form>
        
+           <!-- Botón para abrir  creación -->
+           <a href="{{ route('empleado') }}" class="btn btn-primary">Nueva factura</a>
+
+           
         <table class="table">
             <thead>
                 <tr>

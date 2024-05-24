@@ -3,7 +3,7 @@
 
 <main>
     <div class="container">
-        <h1>Servicios</h1>
+        <h1 class="text-center" >Servicios</h1>
 
         <!-- Button to trigger the modal for creating a new service -->
         <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#crearServicioModal">
