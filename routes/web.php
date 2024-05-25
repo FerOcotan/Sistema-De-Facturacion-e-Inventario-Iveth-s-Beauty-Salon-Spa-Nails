@@ -31,7 +31,17 @@ Route::post('/reservacion/realizar_reserva', [ReservacionController::class, 'sto
 
 Route::get('/empleado', [EmpleadosController::class, 'empleado'])->name('empleado');
 
+Route::post('/empleado/buscardetalle', [EmpleadosController::class, 'search'])->name('empleado2');
 
+Route::post('/empleado/ventatemporal', [EmpleadosController::class, 'storeTemp'])->name('empleado3');
+
+Route::post('/empleado/store', [EmpleadosController::class, 'store'])->name('guardarVenta');
+
+Route::post('/empleado/storecliente', [EmpleadosController::class, 'storeCliente'])->name('guardarCliente');
+
+Route::post('/empleado/storeproducto', [EmpleadosController::class, 'storeProducto'])->name('guardarProducto');
+
+Route::post('/empleado/factura', [EmpleadosController::class, 'showFacturaTemp'])->name('pdfFactura');
 
 
 Route::get('/registro', [UserController::class, 'showRegistrationForm'])->name('registro.form');
