@@ -16,8 +16,7 @@
             }
         })();
     </script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
+    
 <body>
 
     
@@ -38,7 +37,7 @@
 
         <nav class="navegacion">
             <ul>
-                <li class="boton">
+                <li style="margin-top:20px"class="boton">
                 <a href="{{ route('venta.index') }}" >
                 <ion-icon name="print-outline"></ion-icon>
                         <span>Facturas</span>
@@ -106,7 +105,7 @@
                 </div>
             </div>
             <div class="usuario">
-                <img src="/Jhampier.jpg" alt="">
+              
                 <div class="info-usuario">
                     <div class="nombre-email">
                     <span class="nombre">Cerrar Sesión</span>

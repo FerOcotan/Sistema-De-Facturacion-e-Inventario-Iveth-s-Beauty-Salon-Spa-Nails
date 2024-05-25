@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Ephesis&family=Satisfy&display=swap');
+
+.container {
+max-width: 800px;
+margin: 20px auto;
+padding: 20px;
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+}
+
+.invoice-header {
+text-align: center;
+margin-bottom: 30px;
+}
+
+.invoice-header img {
+max-height: 80px;
+margin-bottom: 10px;
+}
+
+.invoice-title {
+font-size: 32px;
+font-weight: bold;
+color: #000000;
+}
+.customer-details,
+.vendor-details {
+    width: 70%;
+    float: left;
+}
+
+.invoice-details:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.invoice-details {
+margin-bottom: 30px;
+}
+
+.invoice-details p {
+margin: 10px;
+font-size: 16px;
+}
+
+.invoice-details p strong {
+color: #000000;
+}
+
+.table {
+width: 100%;
+margin-bottom: 20px;
+}
+
+.table th {
+background-color: #000000c7;
+color: #fff;
+border: none;
+padding: 12px;
+text-align: center;
+}
+
+.table td {
+border: none;
+padding: 12px;
+background-color: #f8f9fa;
+text-align: center;
+}
+
+.table tfoot td {
+font-weight: bold;
+background-color: #e9ecef;
+}
+
+.total {
+font-size: 18px;
+color: #00000081;
+}
+
+.footer {
+text-align: center;
+margin-top: 30px;
+font-size: 14px;
+color: #666;
+}

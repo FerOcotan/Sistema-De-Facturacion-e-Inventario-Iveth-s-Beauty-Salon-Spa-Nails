@@ -51,10 +51,7 @@
 
                         <!-- Botón para abrir el modal de detalles -->
                      <!-- Botón de descarga de PDF -->
-                    <button type="button"  class="btn btn-pdf">
-                        <i class="bi bi-file-pdf"></i> 
-                    </button>
-
+          
                             <!-- Botón para abrir el modal de detalles -->
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detalleVentaModal{{ $venta->id_venta }}">
                                 Ver

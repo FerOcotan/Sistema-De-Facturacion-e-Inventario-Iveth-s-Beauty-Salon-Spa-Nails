@@ -116,4 +116,34 @@ class VentaController extends Controller
 
         return redirect()->route('venta.index')->with('success', 'Venta eliminada con éxito');
     }
+    public function showFacturaTemp(Request $request)
+{
+    $fecha = $request->fecha;
+    $pago = $request->pago;
+    $total = $request->total;
+
+    $cliente = Cliente::where('id_cliente', $request->id_cliente)->first();
+    $vendedor = Empleado::where('id_empleado', $request->id_empleado)->first();
+
+    if (!$cliente || !$vendedor) {
+        return redirect()->back()->withErrors(['msg' => 'Cliente o vendedor no encontrado.']);
+    }
+
+    $detVentTemp = DetalleVentaTemp::select(
+        'producto.nombre_producto',
+        'producto.precio_producto',
+        'detalle_venta_temp.cantidad_detalle',
+        'producto.id_producto',
+        'detalle_venta_temp.subtotal_detalle',
+        'detalle_venta_temp.id_cliente'
+    )
+        ->join('producto', 'detalle_venta_temp.id_producto', '=', 'producto.id_producto')
+        ->where('id_cliente', $request->id_cliente)
+        ->get();
+
+    $pdf = Pdf::loadView('pdf.factura', compact('cliente', 'fecha', 'pago', 'vendedor', 'detVentTemp', 'total'));
+
+    return $pdf->stream();
+}
+
 }

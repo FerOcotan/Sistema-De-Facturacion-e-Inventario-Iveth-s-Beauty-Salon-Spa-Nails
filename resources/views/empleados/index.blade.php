@@ -1,214 +1,123 @@
 @extends ('includes.sidebar')
 @section('contenido')
+@include('includes.bostrapcrud')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <div class="invoice-container">
         <div class="invoice-header">
-            <h1>Nueva Factura</h1>
+            <h1>Facturación</h1>
         </div>
 
+        
         <div class="invoice-details">
-            <form action="{{ route('guardarVenta') }}" method="post">
+            <form action="{{ route('guardarVenta') }}" method="post" id="formulario">
                 {{ csrf_field() }}
                 <div class="invoice-info-row">
                     <div class="invoice-info">
-                        <label for="cliente">Cliente:</label>
-                        <select id="cliente" name="cliente" onchange="infoCliente(), search();">
+                        <label for="cliente">Cliente</label>
+                        <select id="cliente" name="cliente" onchange="infoCliente(), updateInvoiceTable()">
                             <option value="">Selecciona un cliente</option>
                             @foreach ($clientes as $item)
-                                <option value="{{ $item->id_cliente }}">{{ $item->nombre_cliente }}
-                                    {{ $item->apellido_cliente }}</option>
+                                <option value="{{ $item->id_cliente }}">{{ $item->nombre_cliente }} {{ $item->apellido_cliente }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="invoice-info">
-                        <label for="email1">Email:</label>
-                        <input type="email" id="email" name="email">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" readonly require>
                     </div>
 
                     <div class="invoice-info">
-                        <label for="telefono1">Teléfono:</label>
-                        <input type="tel" id="telefono" name="telefono">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" readonly require>
                     </div>
                 </div>
 
                 <div class="invoice-info-row">
                     <div class="invoice-info">
-                        <label for="fecha">Fecha:</label>
-                        <input type="date" id="fecha" name="fecha" value="2024-05-13" onchange="infoCliente()">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" id="fecha" name="fecha" value="2024-05-13">
                     </div>
 
                     <div class="invoice-info">
-                        <label for="pago">Pago:</label>
-                        <select id="pago" name="pago" onchange="infoCliente()">
+                        <label for="pago">Pago</label>
+                        <select id="pago" name="pago">
                             <option value="Efectivo">Efectivo</option>
                             <option value="Tarjeta">Tarjeta</option>
+                            <option value="Tarjeta">Transferencia</option>
                         </select>
                     </div>
 
                     <div class="invoice-info">
-                        <label for="vendedor">Vendedor:</label>
-                        <select name="vendedor" id="vendedor" onchange="infoCliente()">
-                            <option value="">Vendedor...</option>
+                        <label for="vendedor">Empleado</label>
+                        <select name="vendedor" id="vendedor">
+                          
                             @foreach ($empleados as $item)
                                 <option value="{{ $item->id_empleado }}">{{ $item->nombre_empleado }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-        </div>
-
-        <button type="submit">Guardar Venta</button>
-        </form>
-
-        <button id="openNuevoProductoModal">Nuevo producto</button>
-        <button id="openNuevoClienteModal">Nuevo cliente</button>
-        <button id="openAgregarProductosModal">Agregar productos</button>
-        <button id="openImprimirModal">Imprimir</button>
-
-        <!-- Nuevo Producto Modal -->
-        <div id="nuevoProductoModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Agregar nuevo producto</h2>
                 <hr>
+                <!-- Hidden fields for PDF data -->
+                <input type="hidden" id="id_cliente_pdf" name="id_cliente_pdf">
+                <input type="hidden" id="fecha_pdf" name="fecha_pdf">
+                <input type="hidden" id="pago_pdf" name="pago_pdf">
+                <input type="hidden" id="vendedor_pdf" name="vendedor_pdf">
 
-                <form action="{{ route('guardarProducto') }}" method="post">
-                    {{ csrf_field() }}
-                    <h5 class="title">Nombre del producto:</h5>
-                    <input class="inputt" type="text" id="nombre_producto" name="nombre_producto"
-                        placeholder="Nombre producto" />
-                    <h5 class="title">Precio:</h5>
-                    <input class="inputt" type="text" id="precio_producto" name="precio_producto"
-                        placeholder="Precio de venta" />
-                    <h5 class="title">Existencias:</h5>
-                    <input class="inputt" type="text" id="existencias" name="existencias" placeholder="Excistencias" />
-                    <h5 class="title">Categoría:</h5>
-                    <select class="inputt" name="id_categoria" id="id_categoria">
-                        <option selected>Seleccionar...</option>
-                        @foreach ($categorias as $item)
-                            <option value="{{ $item->id_categoria }}">{{ $item->nombre_categoria }}</option>
-                        @endforeach
-                    </select>
-                    <!-- Aquí irían los campos para ingresar información sobre el nuevo producto -->
-                    <button type="submit" id="guardarNuevoProducto">Guardar</button>
-                </form>
-            </div>
-        </div>
+                <button type="submit" class="btn btn-primary">Guardar </button>
+            </form>
 
-        <!-- Nuevo Cliente Modal -->
-        <div id="nuevoClienteModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Agregar nuevo cliente</h2>
-                <hr>
-
-                <form action="{{ route('guardarCliente') }}" method="post">
-                    {{ csrf_field() }}
-                    <h5 class="title">Nombre cliente:</h5>
-                    <input class="inputt" type="text" id="nombre_cliente" name="nombre_cliente" placeholder="Nombres" />
-                    <h5 class="title">Apellido cliente:</h5>
-                    <input class="inputt" type="text" id="apellido_cliente" name="apellido_cliente"
-                        placeholder="Apellidos" />
-                    <h5 class="title">Dirección:</h5>
-                    <input class="inputt" type="text" id="direccion_cliente" name="direccion_cliente"
-                        placeholder="Dirección" />
-                    <h5 class="title">DUI:</h5>
-                    <input class="inputt" type="text" id="dui_cliente" name="dui_cliente" placeholder="DUI" />
-                    <h5 class="title">Teléfono:</h5>
-                    <input class="inputt" type="text" id="telefono_cliente" name="telefono_cliente"
-                        placeholder="Teléfono" />
-                    <h5 class="title">E-mail:</h5>
-                    <textarea class="inputt" id="email_cliente" name="email_cliente" placeholder="Email"></textarea>
-                    <h5 class="title">Clave:</h5>
-                    <input class="inputt" type="text" id="clave_cliente" name="clave_cliente"
-                        placeholder="Contraseña" />
-
-                    <!-- Aquí irían los campos para ingresar información sobre el nuevo cliente -->
-                    <button type="submits" id="guardarNuevoCliente">Guardar</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Agregar Productos Modal -->
-        <div id="agregarProductosModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Agregar Productos</h2>
-                <!-- Aquí irían los campos para agregar productos -->
-                <select class="form-control" name="productoAgregar" id="productoAgregar">
-                    <option selected>Seleccione...</option>
-                    @foreach ($productos as $item)
-                        <option value="{{ $item->id_producto }}">{{ $item->nombre_producto }}</option>
-                    @endforeach
-                </select>
-                <input type="text" name="cantidad" id="cantidad" placeholder="Cantidad">
-                <button class="boton" onclick="addVenta(), search()">Agregar</button>
-            </div>
-        </div>
-
-        <!-- Imprimir Modal -->
-        <div id="imprimirModal" class="modal">
-            <form action="{{ route('pdfFactura') }}" id="formulario" method="post" target="_blank">
+            <!-- Separate form for generating PDF -->
+            <form action="{{ route('showFacturaTemp') }}" method="post" target="_blank" id="pdfForm">
                 {{ csrf_field() }}
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2>Imprimir</h2>
-                    <input type="hidden" name="id_cliente_pdf" id="id_cliente_pdf">
-                    <input type="hidden" name="fecha_pdf" id="fecha_pdf">
-                    <input type="hidden" name="pago_pdf" id="pago_pdf">
-                    <input type="hidden" name="vendedor_pdf" id="vendedor_pdf">
-                    <!-- Contenido para imprimir -->
-                    <button type="submit" id="imprimir">Imprimir</button>
-                </div>
+                
+                <input type="hidden" id="pdf_cliente" name="id_cliente_pdf">
+                <input type="hidden" id="pdf_fecha" name="fecha_pdf">
+                <input type="hidden" id="pdf_pago" name="pago_pdf">
+                <input type="hidden" id="pdf_vendedor" name="vendedor_pdf">
+             
+
             </form>
         </div>
-
-        <script>
-            function infoCliente() {
-                var id_cliente = document.getElementById("cliente").value;
-                var fecha = document.getElementById('fecha').value;
-                var pago = document.getElementById('pago').value;
-                var vendedor = document.getElementById('vendedor').value;
-
-                document.getElementById("id_cliente_pdf").value = id_cliente;
-                document.getElementById('fecha_pdf').value = fecha;
-                document.getElementById('pago_pdf').value = pago;
-                document.getElementById('vendedor_pdf').value = vendedor;
-
-                @foreach ($clientes as $item)
-                    if ({{ $item->id_cliente }} == id_cliente) {
-                        document.getElementById("email").value = '{{ $item->email_cliente }}';
-                        document.getElementById("telefono").value = '{{ $item->telefono_cliente }}';
-                    }
-                @endforeach
-            }
-
-            function pdfAbrir() {
-                window.open('/empleado/pdf2', '_blank');
-            }
-
-            document.addEventListener("DOMContentLoaded", function() {
-                document.getElementById("formulario").addEventListener('submit', validarFormulario);
-            });
-
-            function validarFormulario(evento) {
-                evento.preventDefault();
-                var usuario = document.getElementById('cliente').value;
-                if (usuario.length == 0) {
-                    alert('Seleccione el cliente');
-                    return;
-                }
-                var clave = document.getElementById('vendedor').value;
-                if (clave.length == 0) {
-                    alert('Seleccione el vendedor');
-                    return;
-                }
-                this.submit();
-            }
-        </script>
-
+<hr>
+        <button id="openAgregarProductosModal" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#agregarProductosModal">Agregar productos</button>
+        <button type="button" class="btn btn-pdf" onclick="generarPDF()">
+                    <i class="bi bi-file-pdf"></i>Imprimir
+                </button>
+                <hr>
+        <!-- Agregar Productos Modal -->
+        <div id="agregarProductosModal" class="modal fade" tabindex="-1" aria-labelledby="agregarProductosModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="agregarProductosModalLabel">Agregar Productos</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="productoAgregar" class="form-label">Producto:</label>
+                            <select  class="form-select form-control" name="productoAgregar" id="productoAgregar">
+                                <option class="" selected>Seleccione...</option>
+                                @foreach ($productos as $item)
+                                    <option value="{{ $item->id_producto }}">{{ $item->nombre_producto }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cantidad" class="form-label">Cantidad:</label>
+                            <input type="number" class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad">
+                        </div>
+                        <button class="btn btn-primary" onclick="addProduct()">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
         <div class="invoice-products" id="divAjax">
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
                         <th>CODIGO</th>
@@ -216,162 +125,11 @@
                         <th>DESCRIPCION</th>
                         <th>PRECIO UNIT.</th>
                         <th>PRECIO TOTAL</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody class="cuerpo">
-                    <script>
-                        function search() {
-                            var id_cliente = document.getElementById('cliente').value;
-                            var prod = document.getElementById("productoAgregar").value;
-                            var cant = document.getElementById("cantidad").value;
-
-                            if (id_cliente > 0) {
-                                $.ajaxSetup({
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
-                                    }
-                                });
-
-                                $.ajax({
-                                    type: 'POST',
-                                    url: './empleado/buscardetalle',
-                                    data: {
-                                        id_cliente,
-                                        prod,
-                                        cant
-                                    },
-
-                                    success: function(detVentTempBuscar) {
-
-                                        var cuerpo = document.querySelector('.cuerpo');
-                                        var subtotal = document.querySelector('.subtotal');
-                                        var iva = document.querySelector('.iva');
-                                        var total = document.querySelector('.total');
-
-                                        var subtotalSum = 0;
-                                        var ivaSum = 0;
-                                        var totalSum = 0;
-
-                                        cuerpo.innerHTML = "";
-
-                                        @foreach ($detVentTempBuscar as $item)
-                                            if ({{ $item->id_cliente }} == id_cliente) {
-                                                cuerpo.innerHTML += "<?php
-                                                
-                                                echo '<tr>';
-                                                echo '<td>' . $item->id_producto . '</td>';
-                                                echo '<td>' . $item->cantidad_detalle . '</td>';
-                                                echo '<td>' . $item->nombre_producto . '</td>';
-                                                echo '<td>$' . $item->precio_producto . '</td>';
-                                                echo '<td>$' . $item->subtotal_detalle . '</td>';
-                                                echo '</tr>';
-                                                
-                                                ?>";
-
-                                                subtotalSum += {{ $item->precio_producto }};
-                                            }
-                                        @endforeach
-
-                                        subtotal.innerHTML = "$" + subtotalSum.toFixed(2);
-                                        iva.innerHTML = "$" + (subtotalSum * 1.13).toFixed(2);
-                                        total.innerHTML = "$" + (subtotalSum * 1.13).toFixed(2);
-
-                                        // alert('Producto añadido');
-
-                                    },
-                                    statusCode: {
-                                        404: function() {
-                                            alert('web not found');
-                                        }
-                                    },
-                                    error: function(x, xs, xt) {
-                                        // window.open(JSON.stringify(x));
-                                        alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " +
-                                            xt);
-                                    }
-                                });
-                            } else {
-                                alert('Primero seleccione un cliente');
-                            }
-                        }
-
-                        function addVenta() {
-                            var id_cliente = document.getElementById('cliente').value;
-                            var id_empleado = document.getElementById('vendedor').value;
-                            var prod = document.getElementById("productoAgregar").value;
-                            var cant = document.getElementById("cantidad").value;
-
-                            if (id_cliente > 0) {
-                                $.ajaxSetup({
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
-                                    }
-                                });
-
-                                $.ajax({
-                                    type: 'POST',
-                                    url: './empleado/ventatemporal',
-                                    data: {
-                                        id_cliente,
-                                        prod,
-                                        cant
-                                    },
-
-                                    success: function(detVentTempBuscar) {
-
-                                        var cuerpo = document.querySelector('.cuerpo');
-                                        var subtotal = document.querySelector('.subtotal');
-                                        var iva = document.querySelector('.iva');
-                                        var total = document.querySelector('.total');
-
-                                        var subtotalSum = 0;
-                                        var ivaSum = 0;
-                                        var totalSum = 0;
-
-                                        cuerpo.innerHTML = "";
-
-                                        @foreach ($detVentTempBuscar as $item)
-                                            if ({{ $item->id_cliente }} == id_cliente) {
-                                                cuerpo.innerHTML += "<?php
-                                                
-                                                echo '<tr>';
-                                                echo '<td>' . $item->id_producto . '</td>';
-                                                echo '<td>' . $item->cantidad_detalle . '</td>';
-                                                echo '<td>' . $item->nombre_producto . '</td>';
-                                                echo '<td>$' . $item->precio_producto . '</td>';
-                                                echo '<td>$' . $item->subtotal_detalle . '</td>';
-                                                echo '</tr>';
-                                                
-                                                ?>";
-
-                                                subtotalSum += {{ $item->precio_producto }};
-                                            }
-                                        @endforeach
-
-                                        subtotal.innerHTML = "$" + subtotalSum.toFixed(2);
-                                        iva.innerHTML = "$" + (subtotalSum * 1.13).toFixed(2);
-                                        total.innerHTML = "$" + (subtotalSum * 1.13).toFixed(2);
-
-                                        // alert('Producto añadido');
-
-                                    },
-                                    statusCode: {
-                                        404: function() {
-                                            alert('web not found');
-                                        }
-                                    },
-                                    error: function(x, xs, xt) {
-                                        // window.open(JSON.stringify(x));
-                                        alert('error: ' + JSON.stringify(x) + "\n error string: " + xs + "\n error throwed: " +
-                                            xt);
-                                    }
-                                });
-                            } else {
-                                alert('Primero seleccione un cliente y el empleado');
-                            }
-                        }
-                    </script>
-
+                    <!-- Productos añadidos dinámicamente -->
                 </tbody>
                 <tfoot>
                     <tr>
@@ -389,7 +147,193 @@
                 </tfoot>
             </table>
         </div>
+    
 
 
-    </div>
+    <script>
+        function infoCliente() {
+            var id_cliente = document.getElementById("cliente").value;
+
+            @foreach ($clientes as $item)
+                if ('{{ $item->id_cliente }}' == id_cliente) {
+                    document.getElementById("email").value = '{{ $item->email_cliente }}';
+                    document.getElementById("telefono").value = '{{ $item->telefono_cliente }}';
+                }
+            @endforeach
+        }
+
+        function addProduct() {
+            var id_cliente = document.getElementById('cliente').value;
+            var prod = document.getElementById("productoAgregar").value;
+            var cant = document.getElementById("cantidad").value;
+
+            if (!id_cliente || !prod || !cant) {
+                alert('Seleccione el cliente, producto y cantidad');
+                return;
+            }
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('agregarProductoTemporal') }}',
+                data: { id_cliente, prod, cant },
+                success: function(response) {
+                    updateInvoiceTable();
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function removeProduct(id_producto) {
+            var id_cliente = document.getElementById('cliente').value;
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('eliminarProductoTemporal') }}',
+                data: { id_cliente, id_producto },
+                success: function(response) {
+                    updateInvoiceTable();
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function updateInvoiceTable() {
+            var id_cliente = document.getElementById('cliente').value;
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('obtenerProductosTemporales') }}',
+                data: { id_cliente },
+                success: function(data) {
+                    var cuerpo = document.querySelector('.cuerpo');
+                    var subtotal = document.querySelector('.subtotal');
+                    var iva = document.querySelector('.iva');
+                    var total = document.querySelector('.total');
+
+                    cuerpo.innerHTML = '';
+                    var subtotalSum = 0;
+
+                    data.forEach(item => {
+                        var row = `
+                            <tr>
+                                <td>${item.id_producto}</td>
+                                <td>${item.cantidad_detalle}</td>
+                                <td>${item.nombre_producto}</td>
+                                <td>$${item.precio_producto.toFixed(2)}</td>
+                                <td>$${(item.precio_producto * item.cantidad_detalle).toFixed(2)}</td>
+                                <td><button class="btn btn-danger" onclick="removeProduct(${item.id_producto})">Eliminar</button></td>
+                            </tr>
+                        `;
+                        cuerpo.insertAdjacentHTML('beforeend', row);
+                        subtotalSum += item.precio_producto * item.cantidad_detalle;
+                    });
+
+                    var ivaSum = subtotalSum * 0.13;
+                    var totalSum = subtotalSum + ivaSum;
+
+                    subtotal.textContent = `$${subtotalSum.toFixed(2)}`;
+                    iva.textContent = `$${ivaSum.toFixed(2)}`;
+                    total.textContent = `$${totalSum.toFixed(2)}`;
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateInvoiceTable();
+        });
+    </script>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+    // Event listener for form submission
+    document.getElementById("formulario").addEventListener('submit', validarFormulario);
+});
+
+function infoCliente() {
+    var id_cliente = document.getElementById("cliente").value;
+    var fecha = document.getElementById('fecha').value;
+    var pago = document.getElementById('pago').value;
+    var vendedor = document.getElementById('vendedor').value;
+
+    // Set the values of hidden fields for PDF data
+    document.getElementById("id_cliente_pdf").value = id_cliente;
+    document.getElementById('fecha_pdf').value = fecha;
+    document.getElementById('pago_pdf').value = pago;
+    document.getElementById('vendedor_pdf').value = vendedor;
+
+    // Update client email and phone based on selected client
+    @foreach ($clientes as $item)
+        if ({{ $item->id_cliente }} == id_cliente) {
+            document.getElementById("email").value = '{{ $item->email_cliente }}';
+            document.getElementById("telefono").value = '{{ $item->telefono_cliente }}';
+        }
+    @endforeach
+}
+
+function validarFormulario(evento) {
+    evento.preventDefault();
+
+    var cliente = document.getElementById('cliente').value;
+    if (cliente.length === 0) {
+        alert('Seleccione el cliente');
+        return;
+    }
+
+    var vendedor = document.getElementById('vendedor').value;
+    if (vendedor.length === 0) {
+        alert('Seleccione el vendedor');
+        return;
+    }
+
+    // Submit the form
+    this.submit();
+}
+
+function generarPDF() {
+    // Get form data
+    var cliente = document.getElementById("cliente").value;
+    var fecha = document.getElementById('fecha').value;
+    var pago = document.getElementById('pago').value;
+    var vendedor = document.getElementById('vendedor').value;
+
+    // Set the values of hidden fields for PDF form
+    document.getElementById('pdf_cliente').value = cliente;
+    document.getElementById('pdf_fecha').value = fecha;
+    document.getElementById('pdf_pago').value = pago;
+    document.getElementById('pdf_vendedor').value = vendedor;
+
+    // Open PDF in new tab
+    document.getElementById('pdfForm').submit();
+}
+    </script>
 @endsection
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

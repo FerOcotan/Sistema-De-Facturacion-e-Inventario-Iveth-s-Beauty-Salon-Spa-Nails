@@ -11,6 +11,7 @@
     --hover-row-bg-color: #ddd;
     --color-text:black;
     --pdf-boton:#c90b04;
+    --btn-secondary: #668267;
     
 }
 .dark-mode{
@@ -25,9 +26,20 @@
     --even-row-bg-color: white;
     --hover-row-bg-color: rgba(0, 0, 0, 0.279);
     --color-text:white;
-    --pdf-boton:transparent;
+    --pdf-boton:red;
+    --btn-secondary: #6682674c;
 }
 
+
+.btn-close{
+    background-color: var(--header-bg-color);
+    color: var(--even-row-bg-color);
+}
+.btn-secondary{
+    background-color: var(--btn-secondary); /* Cambia el color de fondo del encabezado */
+    color: var(--header-text-color); /* Cambia el color del texto del encabezado */
+    
+}
 
 /* Estilos personalizados para la tabla */
 .table thead {
@@ -50,6 +62,7 @@
     color: white;
 }
 
+
 .btn-primary:hover {
     background-color: var(--primary-color-hover);
     border-color: var(--primary-color);
@@ -57,6 +70,12 @@
 }
 
 .btn-pdf {
+    color: white;
+    background-color: var(--pdf-boton);
+    border-color: var(--pdf-boton);
+}
+.btn-pdf:hover  {
+    color: white;
     background-color: var(--pdf-boton);
     border-color: var(--pdf-boton);
 }

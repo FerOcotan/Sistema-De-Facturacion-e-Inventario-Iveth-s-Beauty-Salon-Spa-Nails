@@ -87,3 +87,9 @@ Route::resource('cliente', ClienteController::class);
 Route::resource('compra', CompraController::class);
 
 
+
+Route::post('/agregarProductoTemporal', [EmpleadosController::class, 'agregarProductoTemporal'])->name('agregarProductoTemporal');
+Route::post('/eliminarProductoTemporal', [EmpleadosController::class, 'eliminarProductoTemporal'])->name('eliminarProductoTemporal');
+Route::post('/obtenerProductosTemporales', [EmpleadosController::class, 'obtenerProductosTemporales'])->name('obtenerProductosTemporales');
+Route::post('/agregarServicioTemporal', [EmpleadosController::class, 'agregarServicioTemporal'])->name('agregarServicioTemporal'); // Nueva ruta
+Route::post('/empleado/pdf2', [EmpleadosController::class, 'showFacturaTemp'])->name('showFacturaTemp');
