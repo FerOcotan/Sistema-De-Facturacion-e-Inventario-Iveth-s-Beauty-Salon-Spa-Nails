@@ -112,7 +112,6 @@ class EmpleadosController extends Controller
             ->get();
 
         $detVentTempBuscar = DetalleVentaTemp::where('id_cliente', $request->cliente)
-            ->where('id_empleado', $request->vendedor)
             ->get();
 
         foreach ($detVentTempBuscar as $item) {
@@ -124,7 +123,6 @@ class EmpleadosController extends Controller
         }
 
         $detVentTempBuscar = DetalleVentaTemp::where('id_cliente', $request->cliente)
-            ->where('id_empleado', $request->vendedor)
             ->delete();
 
         return back();
