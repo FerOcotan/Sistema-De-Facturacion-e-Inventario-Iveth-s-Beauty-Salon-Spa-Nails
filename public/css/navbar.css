@@ -14,6 +14,7 @@ body {
 
 .navbarTop a {
     color: #000000;
+    padding-left: 6px;
 }
 
 .logo img {
@@ -40,24 +41,12 @@ body {
     cursor: pointer;
 }
 
-.filter-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-}
 
-.filter-button:hover {
-    background-color: #444;
-}
 
 .divFiltro {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: rgb(169, 7, 126);
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     padding: 10px;
@@ -106,7 +95,7 @@ body {
 }
 
 .logout-button i {
-    margin-right: 8px;
+    margin-right: -4px;
 }
 
 .logout-button:hover {
@@ -141,7 +130,7 @@ body {
   
   /* Estilos para el campo de búsqueda */
   #site-search {
-    width: 500px;
+    width: 400px;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -201,3 +190,132 @@ body {
 .social-icon:hover {
     color: #d1d1d1; /* Color al pasar el cursor, ajusta según tu preferencia */
 }
+
+
+/* Estilos para el botón de filtro */
+.search-container .btn-filter {
+    background-color: #9614d3ef;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-container .btn-filter i {
+    font-size: 18px;
+}
+
+/* Estilos para el modal */
+.modal-content {
+    border-radius: 8px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-body {
+    padding: 20px;
+    font-size: 16px;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+}
+
+.modal-footer .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* Estilos para el selector de categoría */
+.modal-body .form-control {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* Estilos para los botones del modal */
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.modal-footer .btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+/* Estilos para el mensaje de alerta */
+.alert {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.modal-body .form-control{
+    color: #000000;
+}
+
+.combocategoria{
+    color: #9614d3;
+}
+
+/* Estilos para los elementos dentro de .modal-body */
+.modal-body {
+    /* Estilos para el contenedor principal */
+    padding: 20px;
+    
+    color: #000000;
+}
+
+/* Estilos para el texto centrado */
+.modal-body .text-center {
+    text-align: center;
+}
+
+/* Estilos para el título */
+.modal-body span {
+    color: #000000;
+    font-size: 1.5vw;
+}
+
+/* Estilos para el hr */
+.modal-body hr {
+    color: #000000;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el select */
+.modal-body select {
+    width: 100%;
+    font-size: 1.2vw;
+    padding: 5px;
+}
+
+/* Estilos para las opciones del select */
+.modal-body option {
+    font-size: 1vw;
+    color: #000000;
+}
+
+
+/* Estilos para el texto dentro del select */
+#filterModal .modal-body select {
+    color: rgb(255, 89, 0); /* Cambia "blue" por el color que desees */
+}
+
+
+/* Estilos para el texto dentro de las opciones del select */
+#filterModal .modal-body select option {
+    color: rgb(255, 153, 0); /* Cambia "blue" por el color que desees */
+}
+
+

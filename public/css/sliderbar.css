@@ -11,8 +11,8 @@
     --color-menu-hover:rgb(238,238,238);
     --color-menu-hover-texto:rgb(0,0,0);
 
-    --color-boton:rgb(255, 255, 255);
-    --color-boton-texto:#9614D3;
+    --color-boton:rgba(0, 0, 0, 0.473);
+    --color-boton-texto:#ffffff;
 
     --color-linea:rgb(255, 255, 255);
 
@@ -158,6 +158,7 @@ body{
 
 /*------------> Botón*/
 .barra-lateral .boton{
+    
     width: 100%;
     height: 45px;
     margin-bottom: 20px;
@@ -165,15 +166,22 @@ body{
     align-items: center;
     justify-content: center;
     border: none;
+    text-decoration: none;
     border-radius: 10px;
+    color: var(--color-texto);
     background-color: var(--color-boton);
     color: var(--color-boton-texto);
 }
 .barra-lateral .boton ion-icon{
-    min-width: 50px;
+    min-width: 30px;
     font-size: 25px;
 }
 
+a {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: transparent;
+}
 
 /*--------------> Menu Navegación*/
 .barra-lateral .navegacion{
@@ -364,7 +372,31 @@ main.min-main{
 
 
 
+.barra-lateral {
+    transition: width 0.3s;
+}
 
+.min-main {
+    transition: margin-left 0.3s;
+}
+
+.oculto {
+    display: none;
+}
+
+.modal-content button{
+    background-color: var(--color-barra-lateral) !important;
+}
+
+.btn-primary select{
+    background-color: var(--color-barra-lateral) !important;
+}
+
+
+.btn-primary.focus, .btn-primary:focus{
+    background-color: var(--color-barra-lateral) !important;
+    border-color: var(--color-barra-lateral) !important ;
+}
 
 
 

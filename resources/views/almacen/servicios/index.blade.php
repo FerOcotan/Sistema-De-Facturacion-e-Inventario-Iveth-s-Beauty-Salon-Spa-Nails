@@ -1,92 +1,131 @@
 @extends ('layouts.plantillaPublica')
-@section ('contenido')
+@section('contenido')
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <link href="{{ asset('./css/navbar.css') }}" rel="stylesheet">
+    <!-- Añadir link a Font Awesome para usar un icono de logout -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<!-- INICIO DEL NAVBAR -->
+<header>
+    <nav class="navbarTop ps-3 pe-5">
+        <a href="{{ route('indexProducto') }}">
+            <div class="logo">
+                <img src="{{ asset('img/logo_delgado.png') }}" alt="Logo">
+            </div>
+        </a>
+
+        <!-- INICIO BUSCAR -->
+        <div class="search-container">
+            <form id="searchForm" action="{{ route('buscarServicio') }}" method="POST">
+                @csrf
+                <input type="search" id="site-search" name="buscarNombre" placeholder="Buscar producto..." />
+                <input type="hidden" value="" name="id_categoria" id="id_categoria">
+                <button type="submit" class="btn-search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Modal de Alerta -->
+        @if ($sinResultados)
+            <div class="modal fade" id="noResultsModal" tabindex="-1" aria-labelledby="noResultsModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="noResultsModalLabel">Sin Resultados</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            No se encontraron productos que coincidan con tu búsqueda.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+        <!-- FIN BUSCAR -->
+
+        <ul class="d-flex justify-content-end align-items-center nav-links">
+            <li class="nav-item">
+                <a class="nav-link-hover" href="{{ route('indexProducto') }}">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link-hover" aria-current="page" href="{{ route('servicio') }}">Servicios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link-hover" href="{{ route('reservaciones') }}">Hacer reservación</a>
+            </li>
+            <li class="nav-item">
+                <button class="logout-button" onclick="window.location.href='{{ route('cerrarSesion') }}'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- FIN DEL NAVBAR -->
 
 <!-- INICIO TITULO Y LOGO -->
 <div class="container d-flex justify-content-center">
     <div class="tituloLogo text-center">
-        <img src="{{asset('./img/logo_delgado.png')}}" alt="">
-        <h1 style="font-size: 4vw;">Catálogo</h1>
+        
+        <h1 style="font-size: 3vw;">Catálogo</h1>
     </div>
 </div>
 <!-- FIN TITULO Y LOGO -->
 
-<!-- INICIO BUSCAR -->
-<form action="{{ route('buscarServicio') }}" method="POST">
-    {{ csrf_field() }}
-    <div class="container d-flex justify-content-between mb-3">
-        <input type="hidden" value="" name="id_categoria" id="id_categoria">
-        <div>
-            <h1 style="font-size: 3vw;">Servicios</h1>
-        </div>
-        <div class="buscarInput d-flex">
-            <div>
-                <input type="text" placeholder="Buscar..." name="buscarNombre" id="buscarNombre" style="margin-right: 8.9vw;">
-                <button type="submit" class="aLupa"><img src="{{asset('./img/lupa.png')}}" class="lupa" alt=""></button>
-            </div>
-        </div>
-
-        <button type="button" class="botonBuscar"><img src="{{asset('./img/filtrar.png')}}" class="filtro" alt=""></button>
-    </div>
-</form>
-<!-- FIN BUSCAR -->
-
 <!-- INICIO TARJETAS -->
-<?php   
-    $producto = [[]];
-    $iProd = 0;
+<div class="container mb-3 ">
+@foreach ($servicios->chunk(4) as $chunk)
+        <div class="d-flex justify-content-between">
+            @foreach ($chunk as $item)
+        <a href="#" class="aTarjetas">
+            <div class="tarjetas">
 
-    foreach ($servicios as $item)
-    {    
-        $producto[$iProd][0] = $item->id_producto;
-        $producto[$iProd][1] = $item->nombre_servicio;
-        $producto[$iProd][2] = $item->precio_servicio;
-        $iProd++;   
-    }
-        
-    echo '<div class="container mb-3 d-flex justify-content-between ">';
-
-    for ($i=0; $i < count($producto); $i++) { 
-        if ($i < 4) {
-            echo '
-                <a href="#" class="aTarjetas">
-                    <div class="tarjetas">
-                        <img src="';?>{{ asset('./img/Beneficios-de-cortarse-el-pelo.jpg') }}<?php echo'" class="card-img-top" alt="...">
-                        <div class="cuerpo-tarjeta text-center ">
-                            <h5 class="card-title" style="font-size: 2.3vw;">' . $producto[$i][1]. '</h5>
-                            <p class="card-text" style="font-size: 2vw; margin-top: -1vw;">$' . $producto[$i][2]. '</p>
+            <div class="cuerpo-tarjeta2 text-center">
+                            <h5 class="card-title">{{ $item->nombre_servicio }}</h5>
+                          
+                            
                         </div>
-                    </div>
-                </a>
-            ';
-        }
-    }
-
-    echo '</div>';
-
-    echo '<div class="container mb-3 d-flex justify-content-between ">';
-
-    for ($i=4; $i < count($producto); $i++) { 
-        if ($i < 8) {
-            echo '
-                <a href="#" class="aTarjetas">
-                    <div class="tarjetas">
-                        <img src="';?>{{ asset('./img/Beneficios-de-cortarse-el-pelo.jpg') }}<?php echo'" class="card-img-top" alt="...">
-                        <div class="cuerpo-tarjeta text-center ">
-                            <h5 class="card-title" style="font-size: 2.3vw;">' . $producto[$i][1]. '</h5>
-                            <p class="card-text" style="font-size: 2vw; margin-top: -1vw;">$' . $producto[$i][2]. '</p>
+                        <img src="{{ $item->img_servicio }}" class="card-img-top" alt="{{ $item->nombre_servicio }}">
+                <div class="cuerpo-tarjeta text-center">
+                          
+                          
+                            <p class="card-text card-price">${{ $item->precio_servicio  }}</p>
                         </div>
-                    </div>
-                </a>
-            ';
-        }
-    }
-
-    echo '</div>';
-?>
+            </div>
+        </a>
+        @endforeach
+        </div>
+    @endforeach
+</div>
 <!-- FIN TARJETAS -->
 
-<!-- INCIO DE LA PAGINACIÓN -->
-    {{$servicios->links()}}
+
+
+
+<!-- INICIO DE LA PAGINACIÓN -->
+<div class="pagination-container">
+    {{ $servicios->links() }}
+</div>
 <!-- FIN DE LA PAGINACIÓN -->
+
+@if ($sinResultados)
+    <script>
+        $(document).ready(function() {
+            $('#noResultsModal').modal('show');
+        });
+    </script>
+@endif
 
 @endsection

@@ -3,11 +3,20 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ReservacionController;
+use App\Http\Controllers\ReservacionController2;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\EmpleadosController;
+use App\Http\Controllers\ServicioController2;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\ProductoController2;
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CompraController;
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+
+//use App\Models\Servicio;
 //use App\Models\Reservacion;
 //use App\Models\Venta;
 
@@ -47,7 +56,34 @@ Route::post('/empleado/factura', [EmpleadosController::class, 'showFacturaTemp']
 Route::get('/registro', [UserController::class, 'showRegistrationForm'])->name('registro.form');
 Route::post('/registro', [UserController::class, 'register'])->name('registro');
 
+//Ruta para ver el about us
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
+//Rutare para dirigir el about us desde otro lugar.
+//return redirect()->route('about.index');
+
+
+
 
 //Ruta de venta
 Route::resource('venta', VentaController::class);
+
+//Ruta de reservacion para ver desde el empleado
+Route::resource('reservacionempleado', ReservacionController2::class);
+
+//ruta de servicio para ver desde el empleado
+Route::resource('servicioempleado', ServicioController2::class);
+
+//ruta de proveedor para ver desde el empleado
+Route::resource('proveedor', ProveedorController::class);
+
+//ruta de producto para ver desde el empleado
+Route::resource('productoempleado', ProductoController2::class);
+
+//ruta de cliente para ver desde el empleado
+Route::resource('cliente', ClienteController::class);
+
+//ruta de compra para ver desde el empleado
+Route::resource('compra', CompraController::class);
+
 

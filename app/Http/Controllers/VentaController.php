@@ -4,20 +4,42 @@ namespace App\Http\Controllers;
 
 use App\Models\Venta;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class VentaController extends Controller
 {
     // Muestra una lista de ventas
-    public function index()
+
+    public function index(Request $request)
     {
-        $venta = Venta::all();
-        return view('venta.index', compact('venta'));
+
+        $orderBy = $request->get('orderBy', 'id_venta'); // Ordenar por ID Producto por defecto
+        $query = DB::table('venta')
+            ->join('cliente', 'venta.id_cliente', '=', 'cliente.id_cliente')
+            ->join('empleado', 'venta.id_empleado', '=', 'empleado.id_empleado')
+            ->select(
+                'venta.id_venta as id_venta',
+                'cliente.nombre_cliente as id_cliente',
+                'empleado.nombre_empleado as id_empleado',
+                'venta.metodo_pago_venta as metodo_pago_venta',
+                'venta.fecha_hora_venta as fecha_hora_venta',
+                'venta.total_venta as total_venta'
+            )
+            ->orderBy($orderBy); 
+           
+            $clientes = DB::table('cliente')->get();
+            $ventas = $query->get();
+            $empleados = DB::table('empleado')->pluck('nombre_empleado', 'id_empleado');
+            $metodosPagos = ['Efectivo', 'Tarjeta', 'Transferencia'];
+    
+            return view('venta.index', compact('ventas', 'empleados', 'metodosPagos'));
     }
+    
 
     // Muestra el formulario para crear una nueva venta
     public function create()
     {
   
+        $venta = new Venta();
         return view('venta.create', compact('venta'));
     }
 
@@ -61,24 +83,29 @@ class VentaController extends Controller
     public function edit($id)
     {
         $venta = Venta::findOrFail($id);
-        return view('venta.edit', compact('venta'));
+        $ventas = $query->get();
+        $empleados = DB::table('empleado')->pluck('nombre_empleado', 'id_empleado');
+        $metodosPagos = ['Efectivo', 'Tarjeta', 'Transferencia'];
+
+        return view('venta.edit', compact('venta', 'empleados', 'metodosPagos'));
     }
 
     // Actualiza una venta existente en la base de datos
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'cliente' => 'required',
-            'empleado' => 'required',
-            'metodo_pago' => 'required',
-            'fecha' => 'required|date',
-            'total' => 'required|numeric',
+            //'id_cliente' => 'required',
+            'id_empleado' => 'required',
+            'metodo_pago_venta' => 'required',
+            'fecha_hora_venta' => 'required|date',
+            //'total_venta' => 'required|numeric',
         ]);
-
+    
         $venta = Venta::findOrFail($id);
         $venta->update($validatedData);
-
-        return redirect()->route('venta.index')->with('success', 'Venta actualizada con éxito');
+    
+        return redirect()->route('venta.index')
+            ->with('success', 'Venta actualizada con éxito');
     }
 
     // Elimina una venta específica de la base de datos
