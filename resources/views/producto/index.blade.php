@@ -5,8 +5,6 @@
     <div class="container">
         <h1 class="text-center">Producto</h1>
         
-    
-        
           <!-- Formulario de ordenación -->
           <form method="GET" action="{{ route('productoempleado.index') }}" class="mb-3">
             <div class="form-group">
